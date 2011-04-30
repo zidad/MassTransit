@@ -1,0 +1,60 @@
+Why MassTransit
+"""""""""""""""
+
+First, read this http://zguide.zeromq.org/page:all#Fixing-the-World
+
+Now that you are just as excited as I am, you are right? We can talk about
+MassTransit. We believe that this programming model is a very powerful model
+YADADADADA
+
+Like any OSS framework we built MT to be more responsive than commercial offerings
+
+Used in production for 3 years.
+
+Thanks
+
+MassTransit Team
+
+Important Conventions
+'''''''''''''''''''''
+
+URIs
+####
+
+URI's are used to describe endpoints in a multi-transport way ::
+
+    <transport>:://machine-name/queue
+
+An example in MSMQ ::
+
+    msmq://localhost/inbound
+
+An example in RabbitMQ ::
+
+    rabbitmq://localhost/queue/inbound
+
+
+URNs
+####
+
+URN's are used to describe message names in a multi-platform way ::
+
+    urn:message:name:space:class
+
+Endpoints
+#########
+
+An endpoint combines a transport, a serializer, and ???
+
+
+Transports
+##########
+
+This is what we call the things that actually move the messages
+
+#. MSMQ (msmq)
+#. ActiveMQ (activemq)
+#. RabbitMQ (rabbitmq)
+#. InMemory (loopback)
+#. Multicast UDP (multicast)
+#. ZeroMQ (zmq)

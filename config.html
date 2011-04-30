@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuration &mdash; MassTransit v2.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="MassTransit v2.0 documentation" href="index.html" />
+    <link rel="next" title="Service Bus" href="servicebus.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="servicebus.html" title="Service Bus"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Overview"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">MassTransit v2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>MassTransit is configured in code. Below are a few examples that should get you
+started into customizing MassTransit for your specific environment.</p>
+<div class="section" id="basic-configuration-singlton">
+<h2>Basic Configuration (Singlton)<a class="headerlink" href="#basic-configuration-singlton" title="Permalink to this headline">¶</a></h2>
+<p>Below we can see the basic setup of MassTransit following a Bus singlton pattarn.</p>
+<div class="highlight-csharp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">Bus</span><span class="p">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">sbc</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">sbc</span><span class="p">.</span><span class="n">UseMsmq</span><span class="p">();</span>
+    <span class="n">sbc</span><span class="p">.</span><span class="n">UseMulticastSubscriptionClient</span><span class="p">();</span>
+    <span class="n">sbc</span><span class="p">.</span><span class="n">ReceiveFrom</span><span class="p">(</span><span class="s">&quot;msmq://localhost/test_queue&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+<p>This is all you need, from there you can use <cite>Bus.Instance</cite> to gain access to the
+bus.</p>
+<div class="section" id="the-play-by-play">
+<h3>The Play by Play<a class="headerlink" href="#the-play-by-play" title="Permalink to this headline">¶</a></h3>
+<p>Line 1: Opens up the lambda</p>
+<p>Line 3: Select the MSMQ transport</p>
+<p>Line 4: Tells the bus to share subscription information using MSMQ multicast</p>
+<p>Line 5: The address (MSMQ Queue) you want to receive messages on</p>
+<p>Line 6: Close it up, its done!</p>
+</div>
+</div>
+<div class="section" id="basic-configuration-multi-instance">
+<h2>Basic Configuration (Multi Instance)<a class="headerlink" href="#basic-configuration-multi-instance" title="Permalink to this headline">¶</a></h2>
+<p>If you shudder at the thought of a singleton in your code, that&#8217;s ok - we have
+you covered too.</p>
+<div class="highlight-csharp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">var</span> <span class="n">bus</span> <span class="p">=</span> <span class="n">ServiceBusFactory</span><span class="p">.</span><span class="n">New</span><span class="p">(</span><span class="n">sbc</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">sbc</span><span class="p">.</span><span class="n">UseMsmq</span><span class="p">();</span>
+    <span class="n">sbc</span><span class="p">.</span><span class="n">UseMulticastSubscriptionClient</span><span class="p">();</span>
+    <span class="n">sbc</span><span class="p">.</span><span class="n">ReceiveFrom</span><span class="p">(</span><span class="s">&quot;msmq://localhost/test_queue&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuration</a><ul>
+<li><a class="reference internal" href="#basic-configuration-singlton">Basic Configuration (Singlton)</a><ul>
+<li><a class="reference internal" href="#the-play-by-play">The Play by Play</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#basic-configuration-multi-instance">Basic Configuration (Multi Instance)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="overview.html"
+                        title="previous chapter">Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="servicebus.html"
+                        title="next chapter">Service Bus</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/config.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="servicebus.html" title="Service Bus"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Overview"
+             >previous</a> |</li>
+        <li><a href="index.html">MassTransit v2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Chris Patterson, Travis Smith, and Dru Sellers.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.4.
+    </div>
+  </body>
+</html>

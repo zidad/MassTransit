@@ -1,0 +1,31 @@
+Service Bus
+"""""""""""
+
+.. sourcecode:: csharp
+    :linenos:
+    
+    public interface IServiceBus :
+        IDisposable
+    {
+        IEndpoint Endpoint { get; }
+        IEndpoint PoisonEndpoint { get; }
+
+        UnsubscribeAction Subscribe<T>(Action<T> callback) where T : class;
+        UnsubscribeAction Subscribe<T>(Action<T> callback, Predicate<T> condition) where T : class;
+        UnsubscribeAction Subscribe<T>(T consumer) where T : class;
+        UnsubscribeAction Subscribe<TConsumer>() where TConsumer : class;
+        UnsubscribeAction Subscribe(Type consumerType);
+        UnsubscribeAction SubscribeConsumer<T>(Func<T,Action<T>> getConsumerAction) where T : class;
+
+        void Publish<T>(T message) where T : class;
+
+        TService GetService<TService>();
+
+        IMessagePipeline OutboundPipeline { get; }
+        IMessagePipeline InboundPipeline { get; }
+        
+        IServiceBus ControlBus { get; }
+    }
+
+Subscribe attaches the Consumer to the ``ServiceBus`` so that it can receive
+messages from the endpoint.

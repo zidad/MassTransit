@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Why MassTransit &mdash; MassTransit v2.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="MassTransit v2.0 documentation" href="index.html" />
+    <link rel="next" title="Configuration" href="config.html" />
+    <link rel="prev" title="Welcome to MassTransit’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="config.html" title="Configuration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to MassTransit’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">MassTransit v2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="why-masstransit">
+<h1>Why MassTransit<a class="headerlink" href="#why-masstransit" title="Permalink to this headline">¶</a></h1>
+<p>First, read this <a class="reference external" href="http://zguide.zeromq.org/page:all#Fixing-the-World">http://zguide.zeromq.org/page:all#Fixing-the-World</a></p>
+<p>Now that you are just as excited as I am, you are right? We can talk about
+MassTransit. We believe that this programming model is a very powerful model
+YADADADADA</p>
+<p>Like any OSS framework we built MT to be more responsive than commercial offerings</p>
+<p>Used in production for 3 years.</p>
+<p>Thanks</p>
+<p>MassTransit Team</p>
+<div class="section" id="important-conventions">
+<h2>Important Conventions<a class="headerlink" href="#important-conventions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="uris">
+<h3>URIs<a class="headerlink" href="#uris" title="Permalink to this headline">¶</a></h3>
+<p>URI&#8217;s are used to describe endpoints in a multi-transport way</p>
+<div class="highlight-python"><pre>&lt;transport&gt;:://machine-name/queue</pre>
+</div>
+<p>An example in MSMQ</p>
+<div class="highlight-python"><pre>msmq://localhost/inbound</pre>
+</div>
+<p>An example in RabbitMQ</p>
+<div class="highlight-python"><pre>rabbitmq://localhost/queue/inbound</pre>
+</div>
+</div>
+<div class="section" id="urns">
+<h3>URNs<a class="headerlink" href="#urns" title="Permalink to this headline">¶</a></h3>
+<p>URN&#8217;s are used to describe message names in a multi-platform way</p>
+<div class="highlight-python"><pre>urn:message:name:space:class</pre>
+</div>
+</div>
+<div class="section" id="endpoints">
+<h3>Endpoints<a class="headerlink" href="#endpoints" title="Permalink to this headline">¶</a></h3>
+<p>An endpoint combines a transport, a serializer, and ???</p>
+</div>
+<div class="section" id="transports">
+<h3>Transports<a class="headerlink" href="#transports" title="Permalink to this headline">¶</a></h3>
+<p>This is what we call the things that actually move the messages</p>
+<ol class="arabic simple">
+<li>MSMQ (msmq)</li>
+<li>ActiveMQ (activemq)</li>
+<li>RabbitMQ (rabbitmq)</li>
+<li>InMemory (loopback)</li>
+<li>Multicast UDP (multicast)</li>
+<li>ZeroMQ (zmq)</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Why MassTransit</a><ul>
+<li><a class="reference internal" href="#important-conventions">Important Conventions</a><ul>
+<li><a class="reference internal" href="#uris">URIs</a></li>
+<li><a class="reference internal" href="#urns">URNs</a></li>
+<li><a class="reference internal" href="#endpoints">Endpoints</a></li>
+<li><a class="reference internal" href="#transports">Transports</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to MassTransit&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="config.html"
+                        title="next chapter">Configuration</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/overview.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="config.html" title="Configuration"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to MassTransit’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">MassTransit v2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Chris Patterson, Travis Smith, and Dru Sellers.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.4.
+    </div>
+  </body>
+</html>

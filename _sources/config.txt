@@ -1,0 +1,55 @@
+Configuration
+"""""""""""""
+
+MassTransit is configured in code. Below are a few examples that should get you
+started into customizing MassTransit for your specific environment.
+
+Basic Configuration (Singlton)
+''''''''''''''''''''''''''''''
+
+Below we can see the basic setup of MassTransit following a Bus singlton pattarn.
+
+.. sourcecode:: csharp
+    :linenos:
+    
+    Bus.Initialize(sbc =>
+    {
+        sbc.UseMsmq();
+        sbc.UseMulticastSubscriptionClient();
+        sbc.ReceiveFrom("msmq://localhost/test_queue");
+    });
+
+This is all you need, from there you can use `Bus.Instance` to gain access to the
+bus.
+
+The Play by Play
+----------------
+
+Line 1: Opens up the lambda
+
+Line 3: Select the MSMQ transport
+
+Line 4: Tells the bus to share subscription information using MSMQ multicast
+
+Line 5: The address (MSMQ Queue) you want to receive messages on
+
+Line 6: Close it up, its done!
+
+
+
+Basic Configuration (Multi Instance)
+''''''''''''''''''''''''''''''''''''
+
+If you shudder at the thought of a singleton in your code, that's ok - we have
+you covered too.
+
+.. sourcecode:: csharp
+    :linenos:
+    
+    var bus = ServiceBusFactory.New(sbc =>
+    {
+        sbc.UseMsmq();
+        sbc.UseMulticastSubscriptionClient();
+        sbc.ReceiveFrom("msmq://localhost/test_queue");
+    });
+
