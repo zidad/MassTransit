@@ -53,3 +53,72 @@ you covered too.
         sbc.ReceiveFrom("msmq://localhost/test_queue");
     });
 
+
+Subscription Management By Hand
+'''''''''''''''''''''''''''''''
+
+To subscribe a consumer to a message, we have a very fine grain set of functions
+that will allow you to subscribe you consumers with just what you need. Now
+given that it is very fine grained, we also provide a lot of methods to help
+you avoid dealing with it.
+
+.. sourcecode:: csharp
+    :linenos:
+    
+    Bus.Initialize(sbc=>
+    {
+        sbc.Subscribe(sc=>
+        {
+            //untyped
+            sc.Consumer(typeof(MyConsumer), t =>
+            {
+                //begin consumer life cycle
+                return Activator.CreateInstance(t);
+                //end consumer life cycle
+            });
+            
+            //type
+            sc.Consumer<MyConsumer>(() =>
+            {
+                return a =>
+                {
+                    //begin consumer life cycle
+                    var c = new MyConsumer();
+                    a(c);
+                    //end consumer life cycle
+                };
+            });
+            
+            //if you had a container
+            sc.Consumer(typeof(MyConsumer), t=>
+            {
+                return container.GetInstance(t);
+            });
+            
+            sc.Consumer<MyConsumer>(() =>
+            {
+                return a =>
+                {
+                    //windsor
+                    var c = container.Resolve<MyConsumer>();
+                    a(c);
+                    container.Release(c);
+                };
+            });
+        });
+    });
+
+Subscription Management Simplified
+''''''''''''''''''''''''''''''''''
+
+Ok, so all of that above is pretty nasty, and its not something that I want to
+use, but it did allow me to write an extension method that simplified it to the
+following.
+
+.. sourcecode:: csharp
+    :linenos:
+    
+    Bus.Initialize(sbc =>
+        sbc.LoadConsumersFromContainer(container);
+        //other bits of course
+    );

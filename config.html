@@ -23,8 +23,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="MassTransit v2.0 documentation" href="index.html" />
-    <link rel="next" title="Service Bus" href="servicebus.html" />
-    <link rel="prev" title="Overview" href="overview.html" /> 
+    <link rel="prev" title="Installation" href="installation.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,10 +33,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="servicebus.html" title="Service Bus"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="overview.html" title="Overview"
+          <a href="installation.html" title="Installation"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">MassTransit v2.0 documentation</a> &raquo;</li> 
       </ul>
@@ -97,6 +93,113 @@ you covered too.</p>
 </pre></div>
 </td></tr></table></div>
 </div>
+<div class="section" id="subscription-management-by-hand">
+<h2>Subscription Management By Hand<a class="headerlink" href="#subscription-management-by-hand" title="Permalink to this headline">¶</a></h2>
+<p>To subscribe a consumer to a message, we have a very fine grain set of functions
+that will allow you to subscribe you consumers with just what you need. Now
+given that it is very fine grained, we also provide a lot of methods to help
+you avoid dealing with it.</p>
+<div class="highlight-csharp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">Bus</span><span class="p">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">sbc</span><span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">sbc</span><span class="p">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">sc</span><span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="c1">//untyped</span>
+        <span class="n">sc</span><span class="p">.</span><span class="n">Consumer</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">MyConsumer</span><span class="p">),</span> <span class="n">t</span> <span class="p">=&gt;</span>
+        <span class="p">{</span>
+            <span class="c1">//begin consumer life cycle</span>
+            <span class="k">return</span> <span class="n">Activator</span><span class="p">.</span><span class="n">CreateInstance</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+            <span class="c1">//end consumer life cycle</span>
+        <span class="p">});</span>
+
+        <span class="c1">//type</span>
+        <span class="n">sc</span><span class="p">.</span><span class="n">Consumer</span><span class="p">&lt;</span><span class="n">MyConsumer</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">a</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="c1">//begin consumer life cycle</span>
+                <span class="n">var</span> <span class="n">c</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyConsumer</span><span class="p">();</span>
+                <span class="n">a</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+                <span class="c1">//end consumer life cycle</span>
+            <span class="p">};</span>
+        <span class="p">});</span>
+
+        <span class="c1">//if you had a container</span>
+        <span class="n">sc</span><span class="p">.</span><span class="n">Consumer</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">MyConsumer</span><span class="p">),</span> <span class="n">t</span><span class="p">=&gt;</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">container</span><span class="p">.</span><span class="n">GetInstance</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="n">sc</span><span class="p">.</span><span class="n">Consumer</span><span class="p">&lt;</span><span class="n">MyConsumer</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">a</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="c1">//windsor</span>
+                <span class="n">var</span> <span class="n">c</span> <span class="p">=</span> <span class="n">container</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">MyConsumer</span><span class="p">&gt;();</span>
+                <span class="n">a</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+                <span class="n">container</span><span class="p">.</span><span class="n">Release</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+            <span class="p">};</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="subscription-management-simplified">
+<h2>Subscription Management Simplified<a class="headerlink" href="#subscription-management-simplified" title="Permalink to this headline">¶</a></h2>
+<p>Ok, so all of that above is pretty nasty, and its not something that I want to
+use, but it did allow me to write an extension method that simplified it to the
+following.</p>
+<div class="highlight-csharp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">Bus</span><span class="p">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">sbc</span> <span class="p">=&gt;</span>
+    <span class="n">sbc</span><span class="p">.</span><span class="n">LoadConsumersFromContainer</span><span class="p">(</span><span class="n">container</span><span class="p">);</span>
+    <span class="c1">//other bits of course</span>
+<span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 
 
@@ -113,16 +216,15 @@ you covered too.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#basic-configuration-multi-instance">Basic Configuration (Multi Instance)</a></li>
+<li><a class="reference internal" href="#subscription-management-by-hand">Subscription Management By Hand</a></li>
+<li><a class="reference internal" href="#subscription-management-simplified">Subscription Management Simplified</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="overview.html"
-                        title="previous chapter">Overview</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="servicebus.html"
-                        title="next chapter">Service Bus</a></p>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/config.txt"
@@ -152,10 +254,7 @@ you covered too.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="servicebus.html" title="Service Bus"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="overview.html" title="Overview"
+          <a href="installation.html" title="Installation"
              >previous</a> |</li>
         <li><a href="index.html">MassTransit v2.0 documentation</a> &raquo;</li> 
       </ul>
