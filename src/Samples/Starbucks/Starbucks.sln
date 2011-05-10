@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransit.WindsorIntegrat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransit.Log4NetIntegration", "..\..\Loggers\MassTransit.Log4NetIntegration\MassTransit.Log4NetIntegration.csproj", "{8D2BE372-A756-4676-B2EA-ED7846809BFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTransit.Transports.RabbitMq", "..\..\Transports\MassTransit.Transports.RabbitMq\MassTransit.Transports.RabbitMq.csproj", "{6C7149D7-4D97-45DF-A05D-61EC7374491D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Build|Any CPU = Build|Any CPU
@@ -87,6 +89,12 @@ Global
 		{8D2BE372-A756-4676-B2EA-ED7846809BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D2BE372-A756-4676-B2EA-ED7846809BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D2BE372-A756-4676-B2EA-ED7846809BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7149D7-4D97-45DF-A05D-61EC7374491D}.Build|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7149D7-4D97-45DF-A05D-61EC7374491D}.Build|Any CPU.Build.0 = Release|Any CPU
+		{6C7149D7-4D97-45DF-A05D-61EC7374491D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7149D7-4D97-45DF-A05D-61EC7374491D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7149D7-4D97-45DF-A05D-61EC7374491D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7149D7-4D97-45DF-A05D-61EC7374491D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,5 +106,6 @@ Global
 		{25A2A3C3-27D0-4C55-A9E9-0B82D6B6913F} = {1FEFCD44-83A0-4240-B321-A73A53C6DC9E}
 		{98D5A59C-96FA-4A1B-A653-EA5A35C45FC9} = {1FEFCD44-83A0-4240-B321-A73A53C6DC9E}
 		{8D2BE372-A756-4676-B2EA-ED7846809BFE} = {1FEFCD44-83A0-4240-B321-A73A53C6DC9E}
+		{6C7149D7-4D97-45DF-A05D-61EC7374491D} = {1FEFCD44-83A0-4240-B321-A73A53C6DC9E}
 	EndGlobalSection
 EndGlobal
