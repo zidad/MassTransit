@@ -171,6 +171,7 @@ task :copy_services => [:compile] do
 	copyOutputFiles props[:output], "MassTransit.dll", targ
 
      	copyOutputFiles src, "Starbucks.Barista/bin/#{BUILD_CONFIG}/MassTransit.Log4NetIntegration.dll", targ
+	copyOutputFiles File.join(src, "Starbucks.Customer/bin/#{BUILD_CONFIG}"), "{log4net,Magnum,MassTransit.StructureMapIntegration,MassTransit.Transports.RabbitMQ,RabbitMQ.Client,StructureMap}.dll", targ
 
 	copyOutputFiles File.join(src, "Starbucks.Customer/bin/#{BUILD_CONFIG}"), "{log4net,Magnum,MassTransit.StructureMapIntegration,MassTransit.Transports.Msmq,StructureMap}.dll", targ
 	copyOutputFiles File.join(src, "Starbucks.Barista/bin/#{BUILD_CONFIG}"), "{MassTransit.WindsorIntegration,Castle.Windsor,Castle.Core,Topshelf}.dll", targ
