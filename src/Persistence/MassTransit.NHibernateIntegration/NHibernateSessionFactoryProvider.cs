@@ -32,23 +32,22 @@ namespace MassTransit.NHibernateIntegration
     {
         static readonly Mutex _factoryMutex = new Mutex();
         static readonly ILog _log = Logger.Get<NHibernateSessionFactoryProvider>();
+        readonly Configuration _configuration;
         readonly IEnumerable<Type> _mappedTypes;
+        readonly Action<IDbIntegrationConfigurationProperties> _databaseIntegration;
         bool _computed;
-        Configuration _configuration;
-        Action<IDbIntegrationConfigurationProperties> _databaseIntegration;
         ISessionFactory _sessionFactory;
+
+        public NHibernateSessionFactoryProvider(IEnumerable<Type> mappedTypes, Action<IDbIntegrationConfigurationProperties> databaseIntegration)
+            : this(mappedTypes)
+        {
+            _databaseIntegration = databaseIntegration;
+        }
 
         public NHibernateSessionFactoryProvider(IEnumerable<Type> mappedTypes)
         {
             _mappedTypes = mappedTypes;
 
-            _configuration = CreateConfiguration();
-        }
-
-        public NHibernateSessionFactoryProvider(IEnumerable<Type> mappedTypes, Action<IDbIntegrationConfigurationProperties> databaseIntegration)
-        {
-            _mappedTypes = mappedTypes;
-            _databaseIntegration = databaseIntegration;
             _configuration = CreateConfiguration();
         }
 

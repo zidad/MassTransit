@@ -11,7 +11,7 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
 
-namespace MassTransit.NHibernateIntegration.Tests.Sagas
+namespace MassTransit.NHibernateIntegration.Tests
 {
     using System;
     using System.Data;
@@ -28,6 +28,7 @@ namespace MassTransit.NHibernateIntegration.Tests.Sagas
     using Saga;
     using TestFramework;
     using TestFramework.Fixtures;
+    using Sagas;
     using log4net;
 
     [TestFixture, Category("Integration")]
@@ -40,6 +41,7 @@ namespace MassTransit.NHibernateIntegration.Tests.Sagas
         protected override void EstablishContext()
         {
             base.EstablishContext();
+
 
             var provider = new NHibernateSessionFactoryProvider(new Type[]
                 {

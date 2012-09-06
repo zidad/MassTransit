@@ -191,6 +191,7 @@
     <Compile Include="Testing\SagaTest_Specs.cs" />
     <Compile Include="Testing\SagaStateMachineTest_Specs.cs" />
     <Compile Include="Uri_Specs.cs" />
+    <Compile Include="When_configuring_a_service_bus_easily.cs" />
     <None Include="app.config" />
     <Compile Include="Pipeline\Interception_Specs.cs" />
     <Compile Include="ReflectionExploration.cs" />
