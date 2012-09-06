@@ -16,7 +16,6 @@ namespace MassTransit.TestFramework
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Threading;
-	using Helpers;
 	using Logging;
 	using Testing;
 	using Magnum.Extensions;

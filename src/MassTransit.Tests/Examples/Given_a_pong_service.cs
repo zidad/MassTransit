@@ -15,6 +15,7 @@ namespace MassTransit.Tests.Examples
 	using Magnum.TestFramework;
 	using TestFramework;
 	using TestFramework.Messages;
+	using TestFramework.TestConsumers;
 
     [Scenario]
 	public class Given_a_pong_service :

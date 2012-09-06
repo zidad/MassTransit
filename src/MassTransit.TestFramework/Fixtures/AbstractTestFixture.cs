@@ -18,7 +18,6 @@ namespace MassTransit.TestFramework.Fixtures
 	using System.Linq;
 	using Logging;
 	using Magnum.Extensions;
-	using Magnum.TestFramework;
 	using NUnit.Framework;
 
 	[TestFixture]
@@ -59,7 +58,7 @@ namespace MassTransit.TestFramework.Fixtures
 			int depth = -1;
 
 			GetTestStack(type)
-				.Where(x => x.GetAttribute<ScenarioAttribute>() != null)
+				.Where(x => x.GetAttribute<TestFixtureAttribute>() != null)
 				.Select(x => x.Name.Replace("_", " "))
 				.Each(x =>
 					{

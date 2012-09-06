@@ -14,10 +14,10 @@ namespace MassTransit.TestFramework
 {
 	using System;
 	using Fixtures;
-	using Magnum.TestFramework;
 	using MassTransit.Transports.Loopback;
+	using NUnit.Framework;
 
-	[Scenario]
+    [TestFixture]
 	public class Given_a_standalone_service_bus :
 		LocalTestFixture<LoopbackTransportFactory>
 	{

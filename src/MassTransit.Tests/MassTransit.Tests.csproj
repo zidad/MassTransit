@@ -299,7 +299,6 @@
     <Folder Include="Reactive\Samples\" />
     <Folder Include="Services\LoadBalancer\" />
     <Folder Include="Services\Metadata\" />
-    <Folder Include="TextFixtures\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

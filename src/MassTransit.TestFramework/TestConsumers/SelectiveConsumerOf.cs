@@ -10,22 +10,30 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.TestFramework
+namespace MassTransit.TestFramework.TestConsumers
 {
-	using System;
-	using Fixtures;
-	using MassTransit.Transports.Loopback;
-	using NUnit.Framework;
+    using System;
 
-    [TestFixture]
-	public class Given_a_subscription_service_and_two_service_buses :
-		SubscriptionServiceTestFixtureA<LoopbackTransportFactory>
+    public class SelectiveConsumerOf<TMessage> :
+		AbstractTestConsumer<TMessage>,
+		Consumes<TMessage>.Selected
+		where TMessage : class
 	{
-		protected Given_a_subscription_service_and_two_service_buses()
+		private readonly Predicate<TMessage> _accept;
+
+		public SelectiveConsumerOf(Predicate<TMessage> accept)
 		{
-			LocalUri = new Uri("loopback://localhost/mt_client");
-			RemoteUri = new Uri("loopback://localhost/mt_server");
-			SubscriptionUri = new Uri("loopback://localhost/mt_subscriptions");
+			_accept = accept;
+		}
+
+		public SelectiveConsumerOf()
+		{
+			_accept = x => true;
+		}
+
+		public bool Accept(TMessage message)
+		{
+			return _accept(message);
 		}
 	}
 }

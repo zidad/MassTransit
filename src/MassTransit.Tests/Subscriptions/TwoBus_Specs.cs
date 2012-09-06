@@ -19,6 +19,7 @@ namespace MassTransit.Tests.Subscriptions
 	using TestFramework;
 	using TestFramework.Fixtures;
 	using TestFramework.Messages;
+	using TestFramework.TestConsumers;
 
     [Scenario]
 	public class When_publishing_to_a_remote_subscriber :

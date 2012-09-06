@@ -20,7 +20,6 @@ namespace MassTransit.TestFramework.Load
     using Context;
     using Magnum;
     using Magnum.Extensions;
-    using Magnum.TestFramework;
 
     public class LoadGenerator<TRequest, TResponse> :
 		Consumes<TResponse>.All
@@ -147,7 +146,7 @@ namespace MassTransit.TestFramework.Load
 
 			sources.Each(worker => Trace.WriteLine(worker.Key + ": " + worker.Value + " commands"));
 
-			received.ShouldEqual(sent);
+            NUnit.Framework.Assert.AreEqual(sent, received);
 		}
 	}
 }

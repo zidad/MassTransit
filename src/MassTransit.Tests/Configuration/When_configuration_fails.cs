@@ -19,8 +19,9 @@ namespace MassTransit.Tests.Configuration
 	using Magnum.TestFramework;
 	using NUnit.Framework;
 	using TestFramework;
+	using TestFramework.TestConsumers;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_configuration_fails
 	{
 		[Test]

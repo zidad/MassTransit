@@ -10,15 +10,15 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.TestFramework.Fixtures
+namespace MassTransit.TestFramework.TestConsumers
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Threading;
-	using Magnum.Extensions;
-	using NUnit.Framework;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using Magnum.Extensions;
+    using NUnit.Framework;
 
-	public abstract class AbstractTestConsumer<TMessage>
+    public abstract class AbstractTestConsumer<TMessage>
 		where TMessage : class
 	{
 		static readonly List<TMessage> _allMessages = new List<TMessage>();

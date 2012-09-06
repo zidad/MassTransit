@@ -12,29 +12,31 @@
 // specific language governing permissions and limitations under the License.
 namespace MassTransit.TestFramework
 {
-	using System;
-	using Fixtures;
+    using System;
+    using Pipeline.Inspectors;
+    using Pipeline.Sinks;
 
-	public class SelectiveConsumerOf<TMessage> :
-		AbstractTestConsumer<TMessage>,
-		Consumes<TMessage>.Selected
-		where TMessage : class
+    public class EndpointSinkLocator :
+		PipelineInspectorBase<EndpointSinkLocator>
 	{
-		private readonly Predicate<TMessage> _accept;
+		private readonly Type _messageType;
 
-		public SelectiveConsumerOf(Predicate<TMessage> accept)
+		public EndpointSinkLocator(Type messageType)
 		{
-			_accept = accept;
+			_messageType = messageType;
 		}
 
-		public SelectiveConsumerOf()
-		{
-			_accept = x => true;
-		}
+		public Uri DestinationAddress { get; private set; }
 
-		public bool Accept(TMessage message)
+		public bool Inspect<TMessage>(EndpointMessageSink<TMessage> sink) where TMessage : class
 		{
-			return _accept(message);
+			if (typeof(TMessage) == _messageType)
+			{
+				DestinationAddress = sink.Endpoint.Address.Uri;
+				return false;
+			}
+
+			return true;
 		}
 	}
 }

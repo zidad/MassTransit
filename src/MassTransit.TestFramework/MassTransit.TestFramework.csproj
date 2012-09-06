@@ -63,9 +63,6 @@
     <Reference Include="Magnum" Condition="'$(TargetFrameworkVersion)' == 'v4.0'">
       <HintPath>..\..\lib\Magnum\net-4.0\Magnum.dll</HintPath>
     </Reference>
-    <Reference Include="Magnum.TestFramework" Condition="'$(TargetFrameworkVersion)' == 'v3.5'">
-      <HintPath>..\..\lib\Magnum\net-3.5\TestFramework\Magnum.TestFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Magnum.TestFramework" Condition="'$(TargetFrameworkVersion)' == 'v4.0'">
       <HintPath>..\..\lib\Magnum\net-4.0\TestFramework\Magnum.TestFramework.dll</HintPath>
     </Reference>
@@ -91,9 +88,11 @@
       <Link>SolutionVersion.cs</Link>
     </Compile>
     <Compile Include="ATestException.cs" />
-    <Compile Include="ExtensionMethodsForSubscriptions.cs" />
-    <Compile Include="ExtensionsForTestingEndpoints.cs" />
-    <Compile Include="Fixtures\EndpointCacheProxy.cs" />
+    <Compile Include="CorrelatedMessageSinkLocator.cs" />
+    <Compile Include="EndpointCacheProxy.cs" />
+    <Compile Include="EndpointSinkLocator.cs" />
+    <Compile Include="Extensions\ExtensionMethodsForSubscriptions.cs" />
+    <Compile Include="Extensions\ExtensionsForTestingEndpoints.cs" />
     <Compile Include="Fixtures\LoopbackLocalAndRemoteTestFixture.cs" />
     <Compile Include="Fixtures\LoopbackTestFixture.cs" />
     <Compile Include="Fixtures\SagaTestFixture.cs" />
@@ -101,10 +100,6 @@
     <Compile Include="Fixtures\TwoBusTestFixture.cs" />
     <Compile Include="Future.cs" />
     <Compile Include="FutureMessage.cs" />
-    <Compile Include="Helpers\CorrelatedMessageSinkLocator.cs" />
-    <Compile Include="Helpers\EndpointSinkLocator.cs" />
-    <Compile Include="Fixtures\AbstractTestConsumer.cs" />
-    <Compile Include="ConsumerOf.cs" />
     <Compile Include="Fixtures\AbstractTestFixture.cs" />
     <Compile Include="Fixtures\EndpointTestFixture.cs" />
     <Compile Include="Fixtures\LocalAndRemoteTestFixture.cs" />
@@ -146,17 +141,19 @@
     <Compile Include="Sagas\StartSimpleSaga.cs" />
     <Compile Include="Sagas\TestSaga.cs" />
     <Compile Include="Sagas\UserValidated.cs" />
-    <Compile Include="SelectiveConsumerOf.cs" />
     <Compile Include="Fixtures\LocalTestFixture.cs" />
     <Compile Include="Given_a_standalone_service_bus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ExtensionMethodsForSagas.cs" />
+    <Compile Include="Extensions\ExtensionMethodsForSagas.cs" />
+    <Compile Include="TestConsumers\AbstractTestConsumer.cs" />
+    <Compile Include="TestConsumers\ConsumerOf.cs" />
+    <Compile Include="TestConsumers\SelectiveConsumerOf.cs" />
     <Compile Include="TestConsumers\TestConsumerBase.cs" />
     <Compile Include="TestConsumers\TestCorrelatedConsumer.cs" />
     <Compile Include="TestConsumers\TestMessageConsumer.cs" />
     <Compile Include="TestConsumers\TestReplyService.cs" />
     <Compile Include="TestConsumers\TestSelectiveConsumer.cs" />
-    <Compile Include="TestExtensions.cs" />
+    <Compile Include="Extensions\TestExtensions.cs" />
     <Compile Include="Transports\TransactionalEndpointContract.cs" />
     <Compile Include="Transports\TransportContract.cs" />
     <Compile Include="Transports\TransportReceivingContract.cs" />

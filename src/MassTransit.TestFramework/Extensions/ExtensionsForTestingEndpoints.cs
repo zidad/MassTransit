@@ -14,7 +14,6 @@ namespace MassTransit.TestFramework
 {
     using System;
     using Magnum.Extensions;
-    using Magnum.TestFramework;
     using MassTransit.Transports;
     using NUnit.Framework;
     using Serialization;
@@ -28,8 +27,8 @@ namespace MassTransit.TestFramework
 
             transport.Receive(context =>
                 {
-                    context.ShouldNotBeNull();
-                    context.ShouldBeAnInstanceOf<IReceiveContext>();
+                    Assert.IsNotNull(context);
+                    Assert.IsInstanceOf<IReceiveContext>(context);
 
                     serializer.Deserialize(context);
 
@@ -43,7 +42,7 @@ namespace MassTransit.TestFramework
                     return null;
                 }, TimeSpan.FromSeconds(8));
 
-            future.IsCompleted.ShouldBeTrue(transport.Address + " should contain a message of type " +
+            Assert.IsTrue(future.IsCompleted,transport.Address + " should contain a message of type " +
                                             typeof(TMessage).Name);
         }
 
@@ -54,8 +53,8 @@ namespace MassTransit.TestFramework
 
             transport.Receive(context =>
                 {
-                    context.ShouldNotBeNull();
-                    context.ShouldBeAnInstanceOf<IReceiveContext>();
+                    Assert.IsNotNull(context);
+                    Assert.IsInstanceOf<IReceiveContext>(context);
 
                     serializer.Deserialize(context);
 
@@ -68,7 +67,7 @@ namespace MassTransit.TestFramework
                     return null;
                 }, TimeSpan.FromSeconds(8));
 
-            future.IsCompleted.ShouldBeTrue(transport.Address + " should contain a message of type " +
+            Assert.IsTrue(future.IsCompleted, transport.Address + " should contain a message of type " +
                                             messageType.ToShortTypeName());
         }
 
@@ -79,8 +78,8 @@ namespace MassTransit.TestFramework
 
             endpoint.Receive(context =>
                 {
-                    context.ShouldNotBeNull();
-                    context.ShouldBeAnInstanceOf<IReceiveContext>();
+                    Assert.IsNotNull(context);
+                    Assert.IsInstanceOf<IReceiveContext>(context);
 
                     IConsumeContext<TMessage> messageContext;
                     if (context.TryGetContext(out messageContext))
@@ -92,7 +91,7 @@ namespace MassTransit.TestFramework
                     return null;
                 }, TimeSpan.FromSeconds(8));
 
-            future.IsCompleted.ShouldBeTrue(endpoint.Address + " should contain a message of type " +
+            Assert.IsTrue(future.IsCompleted, endpoint.Address + " should contain a message of type " +
                                             typeof(TMessage).Name);
         }
 
@@ -115,8 +114,8 @@ namespace MassTransit.TestFramework
             {
                 endpoint.Receive(context =>
                     {
-                        context.ShouldNotBeNull();
-                        context.ShouldBeAnInstanceOf<IReceiveContext>();
+                        Assert.IsNotNull(context);
+                        Assert.IsInstanceOf<IReceiveContext>(context);
 
                         IConsumeContext<TMessage> messageContext;
                         if (context.TryGetContext(out messageContext))
@@ -129,8 +128,7 @@ namespace MassTransit.TestFramework
                         return null;
                     }, remaining);
             }
-
-            future.IsCompleted.ShouldBeTrue(endpoint.Address + " should contain a message of type " +
+            Assert.IsTrue(future.IsCompleted, endpoint.Address + " should contain a message of type " +
                                             typeof(TMessage).Name +
                                             " with correlation id " + expectedMessage.CorrelationId);
         }
@@ -140,9 +138,9 @@ namespace MassTransit.TestFramework
         {
             endpoint.Receive(context =>
                 {
-                    context.ShouldNotBeNull();
-                    context.ShouldBeAnInstanceOf<IReceiveContext>();
-
+                    Assert.IsNotNull(context);
+                    Assert.IsInstanceOf<IReceiveContext>(context);
+                    
                     if (context.IsContextAvailable(typeof(TMessage)))
                     {
                         Assert.Fail(endpoint.Address + " should not contain a message of type " + typeof(TMessage).Name);
@@ -157,8 +155,8 @@ namespace MassTransit.TestFramework
         {
             endpoint.Receive(context =>
                 {
-                    context.ShouldNotBeNull();
-                    context.ShouldBeAnInstanceOf<IReceiveContext>();
+                    Assert.IsNotNull(context);
+                    Assert.IsInstanceOf<IReceiveContext>(context);
 
                     IConsumeContext<TMessage> messageContext;
                     if (context.TryGetContext(out messageContext))

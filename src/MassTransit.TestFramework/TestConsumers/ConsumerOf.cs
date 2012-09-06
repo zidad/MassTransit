@@ -10,33 +10,22 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.TestFramework.Helpers
+namespace MassTransit.TestFramework.TestConsumers
 {
-	using System;
-	using Pipeline.Inspectors;
-	using Pipeline.Sinks;
+    using System;
 
-	public class EndpointSinkLocator :
-		PipelineInspectorBase<EndpointSinkLocator>
+    public class ConsumerOf<TMessage> :
+		AbstractTestConsumer<TMessage>,
+		Consumes<TMessage>.All
+		where TMessage : class
 	{
-		private readonly Type _messageType;
-
-		public EndpointSinkLocator(Type messageType)
+		public ConsumerOf()
 		{
-			_messageType = messageType;
 		}
 
-		public Uri DestinationAddress { get; private set; }
-
-		public bool Inspect<TMessage>(EndpointMessageSink<TMessage> sink) where TMessage : class
+		public ConsumerOf(Action<TMessage> consumerAction)
+			: base(consumerAction)
 		{
-			if (typeof(TMessage) == _messageType)
-			{
-				DestinationAddress = sink.Endpoint.Address.Uri;
-				return false;
-			}
-
-			return true;
 		}
 	}
 }

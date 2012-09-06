@@ -15,6 +15,7 @@ namespace MassTransit.Tests.Examples
 	using Magnum.TestFramework;
 	using TestFramework;
 	using TestFramework.Messages;
+	using TestFramework.TestConsumers;
 
     [Scenario]
 	public class Given_a_consumer_is_subscribed_to_a_message_on_a_remote_bus :
