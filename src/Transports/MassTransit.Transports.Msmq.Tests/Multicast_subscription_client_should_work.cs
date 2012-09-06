@@ -16,9 +16,7 @@ namespace MassTransit.Transports.Msmq.Tests
     using System.Diagnostics;
     using Magnum.Extensions;
     using Magnum.TestFramework;
-    using MassTransit.Tests;
     using NUnit.Framework;
-    using Pipeline.Inspectors;
     using TestFixtures;
     using TestFramework;
     using TestFramework.Messages;

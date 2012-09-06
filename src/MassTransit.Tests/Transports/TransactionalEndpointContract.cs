@@ -16,8 +16,9 @@ namespace MassTransit.Tests.Transports
 	using System.Transactions;
 	using MassTransit.Transports;
 	using NUnit.Framework;
+	using TestFramework.Messages;
 
-	public abstract class TransactionalEndpointContract<TTransportFactory>
+    public abstract class TransactionalEndpointContract<TTransportFactory>
 		where TTransportFactory : class, ITransportFactory, new()
 	{
 		IEndpointCache _endpointCache;

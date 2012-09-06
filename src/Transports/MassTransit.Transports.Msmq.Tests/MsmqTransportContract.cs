@@ -13,7 +13,6 @@
 namespace MassTransit.Transports.Msmq.Tests
 {
     using System;
-    using MassTransit.Tests.Transports;
     using NUnit.Framework;
     using TestFramework.Transports;
 

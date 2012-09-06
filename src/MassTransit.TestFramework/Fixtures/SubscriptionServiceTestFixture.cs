@@ -12,69 +12,138 @@
 // specific language governing permissions and limitations under the License.
 namespace MassTransit.TestFramework.Fixtures
 {
-	using System;
-	using BusConfigurators;
-	using MassTransit.Transports;
-	using NUnit.Framework;
-	using Saga;
-	using Services.Subscriptions.Server;
+    using System;
+    using System.Collections.Generic;
+    using BusConfigurators;
+    using Load;
+    using Magnum.Extensions;
+    using MassTransit.Transports;
+    using NUnit.Framework;
+    using Saga;
+    using Services.Subscriptions.Server;
 
-	[TestFixture]
+    [TestFixture]
 	public class SubscriptionServiceTestFixture<TTransportFactory> :
 		EndpointTestFixture<TTransportFactory>
 		where TTransportFactory : class, ITransportFactory, new()
 	{
-		[TestFixtureSetUp]
-		public void LocalAndRemoteTestFixtureSetup()
+		ISagaRepository<SubscriptionClientSaga> _subscriptionClientSagaRepository;
+		ISagaRepository<SubscriptionSaga> _subscriptionSagaRepository;
+		protected string SubscriptionServiceUri = "loopback://localhost/mt_subscriptions";
+		protected string ClientControlUri = "loopback://localhost/mt_client_control";
+		protected string ServerControlUri = "loopback://localhost/mt_server_control";
+		protected string ClientUri = "loopback://localhost/mt_client";
+		protected string ServerUri = "loopback://localhost/mt_server";
+		protected SubscriptionService SubscriptionService { get; private set; }
+		protected IServiceBus LocalBus { get; set; }
+		protected IServiceBus LocalControlBus { get; set; }
+		protected IServiceBus RemoteBus { get; set; }
+		protected IServiceBus RemoteControlBus { get; private set; }
+		protected IServiceBus SubscriptionBus { get; set; }
+
+		protected override void EstablishContext()
 		{
+			base.EstablishContext();
+
+			SubscriptionBus = ServiceBusFactory.New(x =>
+				{
+					x.ReceiveFrom(SubscriptionServiceUri);
+					x.SetConcurrentConsumerLimit(1);
+				});
+
 			SetupSubscriptionService();
 
-			LocalBus = SetupServiceBus(LocalUri);
-			RemoteBus = SetupServiceBus(RemoteUri);
+			SetupLocalBus();
+
+			SetupRemoteBus();
+
+			Instances = new Dictionary<string, ServiceInstance>();
+		}
+
+		protected void SetupLocalBus()
+		{
+			LocalBus = ServiceBusFactory.New(x =>
+				{
+					x.UseSubscriptionService(SubscriptionServiceUri);
+					x.ReceiveFrom(ClientUri);
+					x.SetConcurrentConsumerLimit(4);
+					x.UseControlBus();
+
+					ConfigureLocalBus(x);
+				});
+
+			LocalControlBus = LocalBus.ControlBus;
+		}
+
+		protected void SetupRemoteBus()
+		{
+			RemoteBus = ServiceBusFactory.New(x =>
+				{
+					x.UseSubscriptionService(SubscriptionServiceUri);
+					x.ReceiveFrom(ServerUri);
+					x.UseControlBus();
+
+					ConfigureRemoteBus(x);
+				});
+
+			RemoteControlBus = RemoteBus.ControlBus;
+		}
+
+		protected Dictionary<string, ServiceInstance> Instances { get; private set; }
+
+		protected ServiceInstance AddInstance(string instanceName, string queueName,
+		                                      Action<ServiceBusConfigurator> configureBus)
+		{
+			var instance = new ServiceInstance(queueName, SubscriptionServiceUri, configureBus);
+
+			Instances.Add(instanceName, instance);
+
+			return instance;
+		}
+
+		protected virtual void ConfigureLocalBus(ServiceBusConfigurator configurator)
+		{
+		}
+
+		protected virtual void ConfigureRemoteBus(ServiceBusConfigurator configurator)
+		{
 		}
 
 		void SetupSubscriptionService()
 		{
-			SubscriptionClientSagaRepository = SetupSagaRepository<SubscriptionClientSaga>();
-			SubscriptionSagaRepository = SetupSagaRepository<SubscriptionSaga>();
+			_subscriptionClientSagaRepository = SetupSagaRepository<SubscriptionClientSaga>();
 
-			SubscriptionBus = SetupServiceBus(SubscriptionUri, x => { x.SetConcurrentConsumerLimit(1); });
+			_subscriptionSagaRepository = SetupSagaRepository<SubscriptionSaga>();
 
-			SubscriptionService = new SubscriptionService(SubscriptionBus,
-				SubscriptionSagaRepository,
-				SubscriptionClientSagaRepository);
+			SubscriptionService = new SubscriptionService(SubscriptionBus, _subscriptionSagaRepository,
+				_subscriptionClientSagaRepository);
 
 			SubscriptionService.Start();
 		}
 
-		protected InMemorySagaRepository<SubscriptionSaga> SubscriptionSagaRepository { get; private set; }
 
-		protected InMemorySagaRepository<SubscriptionClientSaga> SubscriptionClientSagaRepository { get; private set; }
-
-		[TestFixtureTearDown]
-		public void LocalAndRemoteTestFixtureTeardown()
+		protected override void TeardownContext()
 		{
-			LocalBus = null;
+			Instances.Each(x => x.Value.Dispose());
+
+			Instances.Clear();
+
+			RemoteBus.Dispose();
 			RemoteBus = null;
+			RemoteControlBus = null;
+
+			LocalBus.Dispose();
+			LocalBus = null;
+			LocalControlBus = null;
+
+			SubscriptionService.Stop();
+			SubscriptionService.Dispose();
 			SubscriptionService = null;
-		}
 
-		protected Uri LocalUri { get; set; }
-		protected Uri RemoteUri { get; set; }
-		protected Uri SubscriptionUri { get; set; }
+			SubscriptionBus.Dispose();
+			SubscriptionBus = null;
 
-		protected IServiceBus LocalBus { get; private set; }
-		protected IServiceBus RemoteBus { get; private set; }
-		protected IServiceBus SubscriptionBus { get; private set; }
-
-		protected SubscriptionService SubscriptionService { get; private set; }
-
-		protected override void ConfigureServiceBus(Uri uri, ServiceBusConfigurator configurator)
-		{
-			base.ConfigureServiceBus(uri, configurator);
-
-			configurator.UseControlBus();
-			configurator.UseSubscriptionService(SubscriptionUri);
+			base.TeardownContext();
 		}
 	}
 }

@@ -10,14 +10,13 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests.Distributor
+namespace MassTransit.TestFramework.Load
 {
     using BusConfigurators;
-    using Load.Messages;
+    using Fixtures;
     using Magnum;
     using Magnum.Extensions;
     using MassTransit.Transports;
-    using TextFixtures;
 
     public class DistributorTestFixture<TTransportFactory> :
         SubscriptionServiceTestFixture<TTransportFactory>
@@ -30,7 +29,7 @@ namespace MassTransit.Tests.Distributor
 
         protected void AddFirstCommandInstance(string instanceName, string queueName)
         {
-            AddInstance(instanceName, queueName, x => x.Worker(d => d.Handler<FirstCommand>(FirstCommandConsumer)));
+            AddInstance(instanceName, queueName, x => WorkerConfiguratorExtensions.Worker(x, d => d.Handler<FirstCommand>(FirstCommandConsumer)));
         }
 
         void FirstCommandConsumer(IConsumeContext<FirstCommand> context, FirstCommand message)

@@ -15,9 +15,9 @@ namespace MassTransit.Tests.Load.Sagas
 	using System;
 	using Magnum.StateMachine;
 	using MassTransit.Saga;
-	using Messages;
+	using TestFramework.Load;
 
-	public class FirstSaga :
+    public class FirstSaga :
 		SagaStateMachine<FirstSaga>,
 		ISaga
 	{

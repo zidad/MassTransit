@@ -18,13 +18,13 @@ namespace MassTransit.Tests.Distributor
     using System.Threading;
     using BusConfigurators;
     using Load;
-    using Load.Messages;
     using Magnum.Extensions;
     using MassTransit.Distributor;
     using MassTransit.Distributor.Messages;
     using MassTransit.Pipeline.Inspectors;
     using NUnit.Framework;
     using TestFramework;
+    using TestFramework.Load;
 
     [TestFixture]
     public class Default_distributor_specifications :
@@ -42,6 +42,7 @@ namespace MassTransit.Tests.Distributor
                     messageRecieved.Set();
                 });
 
+            
             Instances.ToList().ForEach(
                 x => { x.Value.DataBus.ControlBus.Endpoint.Send(new PingWorker(), c => { c.SendResponseTo(LocalBus); }); });
 

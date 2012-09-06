@@ -10,21 +10,19 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests.Load
+namespace MassTransit.TestFramework.Load
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Diagnostics;
-	using System.Linq;
-	using System.Threading;
-	using Context;
-	using Magnum;
-	using Magnum.Extensions;
-	using Magnum.TestFramework;
-	using Messages;
-	using TestFramework;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Threading;
+    using Context;
+    using Magnum;
+    using Magnum.Extensions;
+    using Magnum.TestFramework;
 
-	public class LoadGenerator<TRequest, TResponse> :
+    public class LoadGenerator<TRequest, TResponse> :
 		Consumes<TResponse>.All
 		where TRequest : class, First
 		where TResponse : class, First
@@ -58,7 +56,7 @@ namespace MassTransit.Tests.Load
 		{
 			using (bus.SubscribeInstance(this).Disposable())
 			{
-				instances.Each(x => x.ShouldHaveRemoteSubscriptionFor<TResponse>());
+				instances.Each(x => ExtensionMethodsForSubscriptions.ShouldHaveRemoteSubscriptionFor<TResponse>(x));
 
 				for (int i = 0; i < iterations; i++)
 				{
@@ -134,7 +132,7 @@ namespace MassTransit.Tests.Load
 
 			if (received > 0)
 			{
-				IOrderedEnumerable<TimeSpan> query = _commands.Values.Select(x => x.ResponseReceivedAt - x.CreatedAt).OrderBy(x => x);
+				IOrderedEnumerable<TimeSpan> query = _commands.Values.Select(x => x.ResponseReceivedAt - x.CreatedAt).OrderBy<TimeSpan, TimeSpan>(x => x);
 
 				int count = query.Count();
 

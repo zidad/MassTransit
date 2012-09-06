@@ -12,13 +12,12 @@
 // specific language governing permissions and limitations under the License.
 namespace MassTransit.Transports.Msmq.Tests
 {
-	using System.Linq;
-	using MassTransit.Tests.Load;
-	using MassTransit.Tests.Load.Messages;
-	using NUnit.Framework;
+    using System.Linq;
+    using NUnit.Framework;
 	using TestFixtures;
+    using TestFramework.Load;
 
-	[TestFixture, Category("Integration")]
+    [TestFixture, Category("Integration")]
 	public class Default_distributor_specifications :
 		MsmqDistributorTestFixture
 	{

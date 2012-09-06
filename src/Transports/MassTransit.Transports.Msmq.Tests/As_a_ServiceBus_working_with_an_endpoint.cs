@@ -17,13 +17,13 @@ namespace MassTransit.Transports.Msmq.Tests
     using System.Threading;
     using Magnum.Extensions;
     using Magnum.TestFramework;
-    using MassTransit.Tests;
-    using MassTransit.Tests.TestConsumers;
+    using Messages;
     using NUnit.Framework;
     using TestFixtures;
     using TestFramework;
     using MassTransit.Testing;
     using TestFramework.Messages;
+    using TestFramework.TestConsumers;
 
     [TestFixture, Integration]
     public class When_a_message_is_published_to_a_transactional_queue :
@@ -97,12 +97,12 @@ namespace MassTransit.Transports.Msmq.Tests
         public void Multiple_Local_Services_Should_Be_Available()
         {
         	var updated = new Future<UpdateMessage>();
-        	var deleted = new Future<MassTransit.Tests.DeleteMessage>();
+        	var deleted = new Future<DeleteMessage>();
 
         	LocalBus.SubscribeHandler<UpdateMessage>(updated.Complete);
-        	LocalBus.SubscribeHandler<MassTransit.Tests.DeleteMessage>(deleted.Complete);
+        	LocalBus.SubscribeHandler<DeleteMessage>(deleted.Complete);
 
-            var dm = new MassTransit.Tests.DeleteMessage();
+            var dm = new DeleteMessage();
             LocalBus.Publish(dm);
 
             var um = new UpdateMessage();
@@ -116,15 +116,15 @@ namespace MassTransit.Transports.Msmq.Tests
         public void Multiple_messages_should_be_delivered_to_the_appropriate_remote_subscribers()
         {
 			var updated = new Future<UpdateMessage>();
-			var deleted = new Future<MassTransit.Tests.DeleteMessage>();
+			var deleted = new Future<DeleteMessage>();
 
 			LocalBus.SubscribeHandler<UpdateMessage>(updated.Complete);
-			LocalBus.SubscribeHandler<MassTransit.Tests.DeleteMessage>(deleted.Complete);
+			LocalBus.SubscribeHandler<DeleteMessage>(deleted.Complete);
 
         	RemoteBus.HasSubscription<UpdateMessage>().Count().ShouldBeGreaterThan(0);
-			RemoteBus.HasSubscription<MassTransit.Tests.DeleteMessage>().Count().ShouldBeGreaterThan(0);
+			RemoteBus.HasSubscription<DeleteMessage>().Count().ShouldBeGreaterThan(0);
 
-			var dm = new MassTransit.Tests.DeleteMessage();
+			var dm = new DeleteMessage();
 			RemoteBus.Publish(dm);
 
 			var um = new UpdateMessage();

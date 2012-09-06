@@ -14,7 +14,6 @@ namespace MassTransit.Transports.Msmq.Tests.Serialization
 {
 	using Magnum.Extensions;
 	using MassTransit.Serialization;
-	using MassTransit.Tests;
 	using NUnit.Framework;
 	using TestFixtures;
 	using TestFramework;

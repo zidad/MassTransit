@@ -13,6 +13,8 @@
 namespace MassTransit.Tests.Distributor
 {
     using MassTransit.Transports.Loopback;
+    using TestFramework.Fixtures;
+    using TestFramework.Load;
 
     public class LoopbackDistributorTestFixture :
         DistributorTestFixture<LoopbackTransportFactory>

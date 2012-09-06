@@ -155,16 +155,8 @@
     <Compile Include="Examples\When_a_message_is_published_to_the_local_bus.cs" />
     <Compile Include="Examples\When_a_message_is_published_via_the_local_bus.cs" />
     <Compile Include="Examples\When_a_message_is_sent_to_the_bus_endpoint.cs" />
-    <Compile Include="Load\CommandInstance.cs" />
     <Compile Include="Distributor\Default_Specs.cs" />
-    <Compile Include="Distributor\DistributorTestFixture.cs" />
-    <Compile Include="Load\Messages\First.cs" />
-    <Compile Include="Load\LoadGenerator.cs" />
     <Compile Include="Distributor\LoopbackDistributorTestFixture.cs" />
-    <Compile Include="Load\Messages\FirstCommand.cs" />
-    <Compile Include="Load\Messages\FirstPending.cs" />
-    <Compile Include="Load\Messages\FirstResponse.cs" />
-    <Compile Include="Distributor\ServiceInstance.cs" />
     <Compile Include="Fault_Specs.cs" />
     <Compile Include="Groups\Group_Specs.cs" />
     <Compile Include="InterfaceSubscription_Specs.cs" />
@@ -249,7 +241,6 @@
     <Compile Include="Subscriptions\SubscriptionService_Specs.cs" />
     <Compile Include="Subscriptions\CorrelatedSubscription_Specs.cs" />
     <Compile Include="TextFixtures\EndpointCacheProxy.cs" />
-    <Compile Include="TextFixtures\SubscriptionServiceTestFixture.cs" />
     <Compile Include="Transports\LoopbackTransportContract.cs" />
     <Compile Include="Saga\InitiateSaga_Specs.cs" />
     <Compile Include="Pipeline\MessageFilter_Specs.cs" />
@@ -275,7 +266,6 @@
     <Compile Include="Saga\RegisterUser_Specs.cs" />
     <Compile Include="Saga\StateMachine\SagaStateMachine_Specs.cs" />
     <Compile Include="Messages\ClientMessage.cs" />
-    <Compile Include="Messages\DeleteMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MessageQueueEndpoint_MeetsCriteria.cs" />
     <Compile Include="Messages\UpdateMessage.cs" />
@@ -322,6 +312,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Load\Messages\" />
     <Folder Include="Reactive\Samples\" />
     <Folder Include="Services\LoadBalancer\" />
     <Folder Include="Services\Metadata\" />

@@ -19,6 +19,7 @@ namespace MassTransit.Tests.Subscriptions
 	using MassTransit.Transports.Loopback;
 	using NUnit.Framework;
 	using TestFramework;
+	using TestFramework.Fixtures;
 	using TextFixtures;
 
 	[TestFixture]

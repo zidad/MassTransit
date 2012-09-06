@@ -14,13 +14,13 @@ namespace MassTransit.Tests.Distributor
 {
     using System.Linq;
     using Load;
-    using Load.Messages;
     using Magnum.Extensions;
     using MassTransit.Distributor.Messages;
     using MassTransit.Pipeline.Inspectors;
     using NUnit.Framework;
     using Stact;
     using TestFramework;
+    using TestFramework.Load;
 
     [TestFixture]
     public class Using_the_distributor_for_a_saga :

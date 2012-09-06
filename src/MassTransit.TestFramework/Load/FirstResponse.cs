@@ -10,22 +10,22 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests.Load.Messages
+namespace MassTransit.TestFramework.Load
 {
-	using System;
-	using Magnum;
+    using System;
+    using Magnum;
 
-	public class FirstPending :
+    public class FirstResponse :
 		First
 	{
-		public FirstPending(Guid correlationId)
+		public FirstResponse(Guid correlationId)
 		{
 			CorrelationId = correlationId;
 
 			CreatedAt = SystemUtil.UtcNow;
 		}
 
-		protected FirstPending()
+		protected FirstResponse()
 		{
 		}
 
