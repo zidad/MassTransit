@@ -108,6 +108,19 @@
     <Compile Include="Given_a_subscription_service_and_two_service_buses.cs" />
     <Compile Include="Given_two_service_buses_with_shared_subscriptions.cs" />
     <Compile Include="Messages\DeleteMessage.cs" />
+    <Compile Include="Messages\PartialSerializationTestMessage.cs" />
+    <Compile Include="Messages\Ping.cs" />
+    <Compile Include="Messages\PingMessage.cs" />
+    <Compile Include="Messages\Pong.cs" />
+    <Compile Include="Messages\PongMessage.cs" />
+    <Compile Include="Messages\RequestMessage.cs" />
+    <Compile Include="Messages\ResponseMessage.cs" />
+    <Compile Include="Messages\SerializationTestMessage.cs" />
+    <Compile Include="Sagas\CompleteSimpleSaga.cs" />
+    <Compile Include="Sagas\InitiateSimpleSaga.cs" />
+    <Compile Include="Sagas\ObservableSagaMessage.cs" />
+    <Compile Include="Sagas\SimpleSaga.cs" />
+    <Compile Include="Sagas\SimpleSagaMessageBase.cs" />
     <Compile Include="SelectiveConsumerOf.cs" />
     <Compile Include="Fixtures\LocalTestFixture.cs" />
     <Compile Include="Given_a_standalone_service_bus.cs" />
@@ -145,6 +158,7 @@
       <Name>MassTransit</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

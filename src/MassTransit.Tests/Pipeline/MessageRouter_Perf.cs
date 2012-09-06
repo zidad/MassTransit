@@ -6,11 +6,11 @@ namespace MassTransit.Tests.Pipeline
 	using Context;
 	using MassTransit.Pipeline;
 	using MassTransit.Pipeline.Sinks;
-	using Messages;
 	using NUnit.Framework;
 	using Rhino.Mocks;
+	using TestFramework.Messages;
 
-	[TestFixture]
+    [TestFixture]
 	public class MessageRouter_Perf
 	{
 		private static PerformantConsumer<PingMessage> _consumer;

@@ -15,9 +15,9 @@ namespace MassTransit.Tests.Serialization
     using System.Threading;
     using Magnum.Extensions;
 	using MassTransit.Serialization;
-	using Messages;
-	using NUnit.Framework;
-	using TextFixtures;
+    using NUnit.Framework;
+    using TestFramework.Messages;
+    using TextFixtures;
 
 	[TestFixture]
 	public abstract class When_sending_a_message_using_the_specified_serializer<TSerializer> :

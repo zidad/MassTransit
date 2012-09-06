@@ -14,10 +14,10 @@ namespace MassTransit.Tests.Pipeline
 {
 	using MassTransit.Pipeline;
 	using MassTransit.Pipeline.Configuration;
-	using Messages;
 	using NUnit.Framework;
+	using TestFramework.Messages;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_building_a_pipeline
 	{
 		[SetUp]

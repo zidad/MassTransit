@@ -17,10 +17,10 @@ namespace MassTransit.Tests.Serialization
 	using Context;
 	using Magnum.TestFramework;
 	using MassTransit.Serialization;
-	using Messages;
 	using NUnit.Framework;
+	using TestFramework.Messages;
 
-	public abstract class PreSharedKeyEncryptedSerialization_Specs<TSerializer>
+    public abstract class PreSharedKeyEncryptedSerialization_Specs<TSerializer>
 		where TSerializer : IMessageSerializer, new()
 	{
 		PartialSerializationTestMessage _message;

@@ -18,10 +18,10 @@ namespace MassTransit.Tests.Subscriptions
     using MassTransit.Pipeline.Inspectors;
     using MassTransit.Services.Subscriptions.Messages;
     using MassTransit.Transports.Loopback;
-    using Messages;
     using NUnit.Framework;
     using TestConsumers;
     using TestFramework;
+    using TestFramework.Messages;
     using TextFixtures;
 
     [TestFixture]

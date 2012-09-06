@@ -18,11 +18,11 @@ namespace MassTransit.Tests.Serialization
 	using Context;
 	using Magnum.Extensions;
 	using MassTransit.Serialization;
-	using Messages;
 	using NUnit.Framework;
+	using TestFramework.Messages;
 
 
-	public abstract class Performance_Specs<TSerializer> where TSerializer : IMessageSerializer, new()
+    public abstract class Performance_Specs<TSerializer> where TSerializer : IMessageSerializer, new()
 	{
 		[Test, Explicit]
 		public void Just_how_fast_are_you()

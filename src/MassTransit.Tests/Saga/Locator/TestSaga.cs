@@ -15,8 +15,9 @@ namespace MassTransit.Tests.Saga.Locator
 	using System;
 	using Magnum.StateMachine;
 	using MassTransit.Saga;
+	using TestFramework.Sagas;
 
-	public class TestSaga :
+    public class TestSaga :
 		SagaStateMachine<TestSaga>,
 		ISaga
 	{

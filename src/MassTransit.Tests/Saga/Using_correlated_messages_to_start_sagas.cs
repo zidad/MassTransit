@@ -16,8 +16,9 @@ namespace MassTransit.Tests.Saga
 	using System.Linq.Expressions;
 	using Magnum.TestFramework;
 	using MassTransit.Saga.Pipeline;
+	using TestFramework.Sagas;
 
-	[Scenario]
+    [Scenario]
 	public class When_using_correlated_messages_to_start_sagas
 	{
 		CorrelationExpressionToSagaIdVisitor<SimpleSaga, InitiateSimpleSaga> _builder;

@@ -22,6 +22,7 @@ namespace MassTransit.Tests.Saga.Locator
     using MassTransit.Saga;
     using MassTransit.Saga.Pipeline;
     using NUnit.Framework;
+    using TestFramework.Sagas;
 
     [TestFixture]
     public class SagaExpression_Specs

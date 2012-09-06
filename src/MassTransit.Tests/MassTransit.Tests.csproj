@@ -142,8 +142,6 @@
     <Compile Include="Examples\Given_a_consumer_is_subscribed_to_a_message_on_a_remote_bus.cs" />
     <Compile Include="Examples\Given_a_consumer_is_subscribed_to_a_message_on_the_remote_bus.cs" />
     <Compile Include="Examples\Given_a_pong_service.cs" />
-    <Compile Include="Examples\Messages\Ping.cs" />
-    <Compile Include="Examples\Messages\Pong.cs" />
     <Compile Include="Examples\Messages\SimpleMessage.cs" />
     <Compile Include="Examples\Sagas\Given_a_simple_saga_does_not_exist.cs" />
     <Compile Include="Examples\Sagas\Given_a_simple_saga_exists_and_is_waiting_for_approval.cs" />
@@ -176,7 +174,6 @@
     <Compile Include="MessageContext_Specs.cs" />
     <Compile Include="MessageInterceptor_Specs.cs" />
     <Compile Include="MessageRetryTracker_Specs.cs" />
-    <Compile Include="Messages\PartialSerializationTestMessage.cs" />
     <Compile Include="NewId_\GuidInterop_Specs.cs" />
     <Compile Include="NewId_\LongTerm_Specs.cs" />
     <Compile Include="NewId_\NetworkAddress_Specs.cs" />
@@ -214,17 +211,12 @@
     <None Include="app.config" />
     <Compile Include="Pipeline\Interception_Specs.cs" />
     <Compile Include="ReflectionExploration.cs" />
-    <Compile Include="Saga\CompleteSimpleSaga.cs" />
-    <Compile Include="Saga\InitiateSimpleSaga.cs" />
     <Compile Include="Pipeline\MessageRouter_Perf.cs" />
     <Compile Include="Saga\Locator\SagaExpression_Specs.cs" />
     <Compile Include="Saga\Locator\SomeClass.cs" />
-    <Compile Include="Saga\ObservableSagaMessage.cs" />
-    <Compile Include="Saga\SimpleSaga.cs" />
     <Compile Include="Retry_Specs.cs" />
     <Compile Include="Saga\Locator\SagaLocator_Specs.cs" />
     <Compile Include="Saga\Locator\TestSaga.cs" />
-    <Compile Include="Saga\SimpleSagaMessageBase.cs" />
     <Compile Include="Saga\StateMachine\AutoStateMachineSaga.cs" />
     <Compile Include="Saga\StateMachine\AutoStateMachine_Specs.cs" />
     <Compile Include="Saga\StateMachine\Inspector_Specs.cs" />
@@ -234,10 +226,7 @@
     <Compile Include="Serialization\ContextSerialization_Specs.cs" />
     <Compile Include="Internal\IdempotentHashtable_Specs.cs" />
     <Compile Include="LocalSubscriptionCache_Specs.cs" />
-    <Compile Include="Messages\ResponseMessage.cs" />
     <Compile Include="Dispatcher_Specs.cs" />
-    <Compile Include="Messages\RequestMessage.cs" />
-    <Compile Include="Messages\SerializationTestMessage.cs" />
     <Compile Include="Serialization\GivenAComplexMessage.cs" />
     <Compile Include="Serialization\GivenASimpleMessage.cs" />
     <Compile Include="Serialization\Header_Specs.cs" />
@@ -294,8 +283,6 @@
     <Compile Include="Saga\StateMachine\SagaStateMachine_Specs.cs" />
     <Compile Include="Messages\ClientMessage.cs" />
     <Compile Include="Messages\DeleteMessage.cs" />
-    <Compile Include="Messages\PingMessage.cs" />
-    <Compile Include="Messages\PongMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MessageQueueEndpoint_MeetsCriteria.cs" />
     <Compile Include="Messages\UpdateMessage.cs" />

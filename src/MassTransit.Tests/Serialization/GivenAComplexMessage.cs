@@ -8,8 +8,8 @@
     using Magnum.Extensions;
     using Magnum.TestFramework;
     using MassTransit.Serialization;
-    using Messages;
     using NUnit.Framework;
+    using TestFramework.Messages;
 
     public abstract class GivenAComplexMessage<TSerializer> where TSerializer : IMessageSerializer, new()
     {

@@ -20,7 +20,6 @@ namespace MassTransit.NHibernateIntegration.Tests.Sagas
     using Magnum.Extensions;
     using MassTransit.Saga;
     using MassTransit.Tests;
-    using MassTransit.Tests.Messages;
     using MassTransit.Tests.Saga;
     using MassTransit.Tests.Saga.Locator;
     using NHibernate;
@@ -28,6 +27,8 @@ namespace MassTransit.NHibernateIntegration.Tests.Sagas
     using NHibernate.Tool.hbm2ddl;
     using NUnit.Framework;
     using Saga;
+    using TestFramework.Messages;
+    using TestFramework.Sagas;
 
     [TestFixture, Category("Integration")]
     public class When_using_the_saga_locator_with_NHibernate

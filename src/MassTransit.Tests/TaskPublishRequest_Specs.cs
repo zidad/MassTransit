@@ -21,6 +21,7 @@ namespace MassTransit.Tests
     using Magnum.TestFramework;
     using NUnit.Framework;
     using TestFramework;
+    using TestFramework.Messages;
     using TextFixtures;
 
 #if NET40
@@ -146,19 +147,9 @@ namespace MassTransit.Tests
                     x.Handler<PingMessage>((context, message) =>
                         {
                             _pingReceived.Set(message);
-                            context.Respond(new PongMessage {TransactionId = message.TransactionId});
+                            context.Respond(new PongMessage {CorrelationId = message.CorrelationId});
                         });
                 });
-        }
-
-        class PingMessage
-        {
-            public Guid TransactionId { get; set; }
-        }
-
-        class PongMessage
-        {
-            public Guid TransactionId { get; set; }
         }
     }
 
@@ -201,16 +192,6 @@ namespace MassTransit.Tests
             base.EstablishContext();
 
             _pingReceived = new FutureMessage<PingMessage>();
-        }
-
-        class PingMessage
-        {
-            public Guid TransactionId { get; set; }
-        }
-
-        class PongMessage
-        {
-            public Guid TransactionId { get; set; }
         }
     }
 #endif

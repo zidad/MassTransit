@@ -14,10 +14,10 @@ namespace MassTransit.Tests
 {
 	using MassTransit.Services.Subscriptions;
 	using MassTransit.Transports.Loopback;
-	using Messages;
 	using NUnit.Framework;
 	using Rhino.Mocks;
 	using TestConsumers;
+	using TestFramework.Messages;
 	using TextFixtures;
 
 	[TestFixture]

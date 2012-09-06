@@ -10,28 +10,23 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests.Messages
+namespace MassTransit.TestFramework.Sagas
 {
-	using System;
+    using System;
 
-	public class ResponseMessage :
-		CorrelatedBy<Guid>
+    [Serializable]
+	public class InitiateSimpleSaga :
+		SimpleSagaMessageBase
 	{
-		private readonly Guid _correlationId;
-
-		//xml serializer
-		public ResponseMessage()
+		public InitiateSimpleSaga()
 		{
 		}
 
-		public ResponseMessage(Guid correlationId)
+		public InitiateSimpleSaga(Guid correlationId)
+			:base(correlationId)
 		{
-			_correlationId = correlationId;
 		}
 
-		public Guid CorrelationId
-		{
-			get { return _correlationId; }
-		}
+		public string Name { get; set; }
 	}
 }

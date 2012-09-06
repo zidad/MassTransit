@@ -17,11 +17,11 @@ namespace MassTransit.Tests.Pipeline
 	using MassTransit.Pipeline;
 	using MassTransit.Pipeline.Configuration;
 	using MassTransit.Pipeline.Inspectors;
-	using Messages;
 	using NUnit.Framework;
 	using Rhino.Mocks;
+	using TestFramework.Messages;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_pushing_a_message_through_an_outbound_pipeline
 	{
 		[SetUp]

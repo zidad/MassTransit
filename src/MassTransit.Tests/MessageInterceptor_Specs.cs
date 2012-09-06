@@ -15,8 +15,8 @@ namespace MassTransit.Tests
     using System.Threading;
     using Magnum.TestFramework;
     using MassTransit.Transports.Loopback;
-    using Messages;
     using NUnit.Framework;
+    using TestFramework.Messages;
     using TextFixtures;
 
     [TestFixture]

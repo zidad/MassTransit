@@ -18,6 +18,7 @@ namespace MassTransit.Tests
     using Magnum.TestFramework;
     using NUnit.Framework;
     using TestFramework;
+    using TestFramework.Messages;
     using TextFixtures;
 
     [TestFixture]
@@ -33,7 +34,7 @@ namespace MassTransit.Tests
             RemoteBus.SubscribeContextHandler<PingMessage>(x =>
                 {
                     pingReceived.Set(x.Message);
-                    x.Respond(new PongMessage {TransactionId = x.Message.TransactionId});
+                    x.Respond(new PongMessage {CorrelationId = x.Message.CorrelationId});
                 });
             LocalBus.ShouldHaveSubscriptionFor<PingMessage>();
 
@@ -45,7 +46,7 @@ namespace MassTransit.Tests
                 {
                     x.Handle<PongMessage>(message =>
                         {
-                            message.TransactionId.ShouldEqual(ping.TransactionId,
+                            message.CorrelationId.ShouldEqual(ping.CorrelationId,
                                 "The response correlationId did not match");
                             pongReceived.Set(message);
                         });
@@ -64,7 +65,7 @@ namespace MassTransit.Tests
                 {
                     x.Handle<PongMessage>(message =>
                         {
-                            message.TransactionId.ShouldEqual(ping.TransactionId,
+                            message.CorrelationId.ShouldEqual(ping.CorrelationId,
                                 "The response correlationId did not match");
                             secondPongReceived.Set(message);
                         });
@@ -115,7 +116,7 @@ namespace MassTransit.Tests
                     RemoteBus.ShouldHaveRemoteSubscriptionFor<PongMessage>();
 
                     pingReceived.Set(x.Message);
-                    RemoteBus.Publish(new PongMessage {TransactionId = x.Message.TransactionId});
+                    RemoteBus.Publish(new PongMessage {CorrelationId = x.Message.CorrelationId});
                 });
             LocalBus.ShouldHaveSubscriptionFor<PingMessage>();
 
@@ -147,7 +148,7 @@ namespace MassTransit.Tests
             RemoteBus.SubscribeContextHandler<PingMessage>(x =>
                 {
                     pingReceived.Set(x.Message);
-                    x.Respond(new PongMessage {TransactionId = x.Message.TransactionId});
+                    x.Respond(new PongMessage {CorrelationId = x.Message.CorrelationId});
                 });
             LocalBus.ShouldHaveSubscriptionFor<PingMessage>();
 
@@ -159,7 +160,7 @@ namespace MassTransit.Tests
                 {
                     x.Handle<PongMessage>(message =>
                         {
-                            message.TransactionId.ShouldEqual(ping.TransactionId,
+                            message.CorrelationId.ShouldEqual(ping.CorrelationId,
                                 "The response correlationId did not match");
                             pongReceived.Set(message);
                         });
@@ -181,7 +182,7 @@ namespace MassTransit.Tests
             RemoteBus.SubscribeContextHandler<PingMessage>(x =>
                 {
                     pingReceived.Set(x.Message);
-                    x.Respond(new PongMessage {TransactionId = x.Message.TransactionId});
+                    x.Respond(new PongMessage {CorrelationId = x.Message.CorrelationId});
                 });
             LocalBus.ShouldHaveSubscriptionFor<PingMessage>();
 
@@ -193,7 +194,7 @@ namespace MassTransit.Tests
                 {
                     x.Handle<PongMessage>(message =>
                         {
-                            message.TransactionId.ShouldEqual(ping.TransactionId,
+                            message.CorrelationId.ShouldEqual(ping.CorrelationId,
                                 "The response correlationId did not match");
                             pongReceived.Set(message);
                         });
@@ -220,7 +221,7 @@ namespace MassTransit.Tests
             RemoteBus.SubscribeContextHandler<PingMessage>(x =>
                 {
                     pingReceived.Set(x.Message);
-                    x.Respond(new PongMessage {TransactionId = x.Message.TransactionId});
+                    x.Respond(new PongMessage {CorrelationId = x.Message.CorrelationId});
                 });
             LocalBus.ShouldHaveSubscriptionFor<PingMessage>();
 
@@ -260,7 +261,7 @@ namespace MassTransit.Tests
             RemoteBus.SubscribeContextHandler<PingMessage>(x =>
                 {
                     pingReceived.Set(x.Message);
-                    x.Respond(new PongMessage {TransactionId = x.Message.TransactionId});
+                    x.Respond(new PongMessage {CorrelationId = x.Message.CorrelationId});
                 });
             LocalBus.ShouldHaveSubscriptionFor<PingMessage>();
 
@@ -361,7 +362,7 @@ namespace MassTransit.Tests
             RemoteBus.SubscribeContextHandler<PingMessage>(x =>
                 {
                     pingReceived.Set(x.Message);
-                    x.Respond(new PongMessage {TransactionId = x.Message.TransactionId});
+                    x.Respond(new PongMessage {CorrelationId = x.Message.CorrelationId});
                 });
             LocalBus.ShouldHaveSubscriptionFor<PingMessage>();
 
@@ -373,7 +374,7 @@ namespace MassTransit.Tests
                 {
                     x.Handle<PongMessage>(message =>
                         {
-                            message.TransactionId.ShouldEqual(ping.TransactionId,
+                            message.CorrelationId.ShouldEqual(ping.CorrelationId,
                                 "The response correlationId did not match");
                             pongReceived.Set(message);
                         });
@@ -383,16 +384,6 @@ namespace MassTransit.Tests
 
             pingReceived.IsAvailable(timeout).ShouldBeTrue("The ping was not received");
             pongReceived.IsAvailable(timeout).ShouldBeTrue("The pong was not received");
-        }
-
-        class PingMessage
-        {
-            public Guid TransactionId { get; set; }
-        }
-
-        class PongMessage
-        {
-            public Guid TransactionId { get; set; }
         }
     }
 }

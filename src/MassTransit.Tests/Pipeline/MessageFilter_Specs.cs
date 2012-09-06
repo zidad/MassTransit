@@ -15,7 +15,6 @@ namespace MassTransit.Tests.Pipeline
 	using MassTransit.Pipeline;
 	using MassTransit.Pipeline.Configuration;
 	using MassTransit.Pipeline.Inspectors;
-	using Messages;
 	using NUnit.Framework;
 	using TestConsumers;
 

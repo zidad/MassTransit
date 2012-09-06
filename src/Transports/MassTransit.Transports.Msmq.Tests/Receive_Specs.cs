@@ -15,11 +15,11 @@ namespace MassTransit.Transports.Msmq.Tests
 	using System;
 	using System.Messaging;
 	using Magnum.TestFramework;
-	using MassTransit.Tests.Messages;
 	using NUnit.Framework;
 	using TestFixtures;
+	using TestFramework.Messages;
 
-	[TestFixture, Category("Integration")]
+    [TestFixture, Category("Integration")]
 	public class Receiving_an_object_from_an_endpoint :
 		MsmqEndpointOnlyTestFixture
 	{

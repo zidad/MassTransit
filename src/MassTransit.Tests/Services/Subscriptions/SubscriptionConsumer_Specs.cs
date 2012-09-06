@@ -16,11 +16,11 @@ namespace MassTransit.Tests.Services.Subscriptions
 	using MassTransit.Pipeline;
 	using MassTransit.Pipeline.Configuration;
 	using MassTransit.Services.Subscriptions;
-	using Messages;
 	using NUnit.Framework;
 	using Rhino.Mocks;
+	using TestFramework.Messages;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_the_consumer_receives_a_subscription
 	{
 		[SetUp]

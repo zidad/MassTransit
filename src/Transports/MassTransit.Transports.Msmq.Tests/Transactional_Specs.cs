@@ -17,10 +17,10 @@ namespace MassTransit.Transports.Msmq.Tests
     using Magnum.Extensions;
     using Magnum.TestFramework;
     using MassTransit.Tests;
-    using MassTransit.Tests.Messages;
     using NUnit.Framework;
     using TestFixtures;
     using TestFramework;
+    using TestFramework.Messages;
 
     [TestFixture, Integration]
     public class Given_a_message_is_received_from_a_transactional_queue :

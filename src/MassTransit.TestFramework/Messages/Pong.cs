@@ -10,24 +10,24 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.TestFramework.Examples.Messages
+namespace MassTransit.TestFramework.Messages
 {
-	using System;
+    using System;
 
-	[Serializable]
-	public class Ping :
-		IEquatable<Ping>,
+    [Serializable]
+	public class Pong :
+		IEquatable<Pong>,
 		CorrelatedBy<Guid>
 	{
-		private Guid _id = new Guid("D62C9B1C-8E31-4D54-ADD7-C624D56085A4");
+		private Guid _id;
 
-		public Ping()
+		protected Pong()
 		{
 		}
 
-		public Ping(Guid id)
+		public Pong(Guid correlationId)
 		{
-			_id = id;
+			_id = correlationId;
 		}
 
 		public Guid CorrelationId
@@ -36,7 +36,7 @@ namespace MassTransit.TestFramework.Examples.Messages
 			set { _id = value; }
 		}
 
-		public bool Equals(Ping obj)
+		public bool Equals(Pong obj)
 		{
 			if (ReferenceEquals(null, obj)) return false;
 			if (ReferenceEquals(this, obj)) return true;
@@ -47,8 +47,8 @@ namespace MassTransit.TestFramework.Examples.Messages
 		{
 			if (ReferenceEquals(null, obj)) return false;
 			if (ReferenceEquals(this, obj)) return true;
-			if (obj.GetType() != typeof (Ping)) return false;
-			return Equals((Ping) obj);
+			if (obj.GetType() != typeof (Pong)) return false;
+			return Equals((Pong) obj);
 		}
 
 		public override int GetHashCode()

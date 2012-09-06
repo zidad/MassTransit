@@ -16,11 +16,11 @@ namespace MassTransit.Tests.Pipeline
 	using System.Diagnostics;
 	using System.Linq.Expressions;
 	using Magnum.Reflection;
-	using Messages;
 	using NUnit.Framework;
 	using TestConsumers;
+	using TestFramework.Messages;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_visiting_an_object_graph
 	{
 		[Test]

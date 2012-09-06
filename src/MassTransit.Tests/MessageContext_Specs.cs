@@ -16,10 +16,10 @@ namespace MassTransit.Tests
     using System.Collections.Generic;
     using Magnum.Extensions;
     using Magnum.TestFramework;
-    using Messages;
     using NUnit.Framework;
     using TestConsumers;
     using TestFramework;
+    using TestFramework.Messages;
     using TextFixtures;
 
     [TestFixture]

@@ -15,12 +15,12 @@ namespace MassTransit.Transports.Msmq.Tests.Serialization
 	using Magnum.Extensions;
 	using MassTransit.Serialization;
 	using MassTransit.Tests;
-	using MassTransit.Tests.Messages;
 	using NUnit.Framework;
 	using TestFixtures;
 	using TestFramework;
+	using TestFramework.Messages;
 
-	[TestFixture, Explicit]
+    [TestFixture, Explicit]
 	public class When_sending_a_message_using_the_specified_serializer<TSerializer> :
 		MsmqEndpointTestFixture
 		where TSerializer : IMessageSerializer, new()

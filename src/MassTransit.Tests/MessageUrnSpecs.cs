@@ -2,7 +2,7 @@ namespace MassTransit.Tests
 {
     using System;
     using NUnit.Framework;
-    using TestFramework.Examples.Messages;
+    using TestFramework.Messages;
 
     [TestFixture]
     public class MessageUrnSpecs

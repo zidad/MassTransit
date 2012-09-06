@@ -17,11 +17,11 @@ namespace MassTransit.Transports.Msmq.Tests
     using Magnum.Extensions;
     using Magnum.TestFramework;
     using MassTransit.Tests;
-    using MassTransit.Tests.Messages;
     using NUnit.Framework;
     using Pipeline.Inspectors;
     using TestFixtures;
     using TestFramework;
+    using TestFramework.Messages;
 
     [TestFixture, Integration]
     public class Multicast_subscription_client_should_work :

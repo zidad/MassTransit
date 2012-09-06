@@ -13,10 +13,10 @@
 namespace MassTransit.Tests
 {
 	using System;
-	using Messages;
 	using NUnit.Framework;
 	using TestConsumers;
 	using TestFramework;
+	using TestFramework.Messages;
 	using TextFixtures;
 
 	[TestFixture]

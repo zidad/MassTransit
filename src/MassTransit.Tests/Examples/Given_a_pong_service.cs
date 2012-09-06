@@ -14,9 +14,9 @@ namespace MassTransit.Tests.Examples
 {
 	using Magnum.TestFramework;
 	using TestFramework;
-	using TestFramework.Examples.Messages;
+	using TestFramework.Messages;
 
-	[Scenario]
+    [Scenario]
 	public class Given_a_pong_service :
 		Given_two_service_buses_with_shared_subscriptions
 	{

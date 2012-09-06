@@ -7,8 +7,9 @@ namespace MassTransit.Tests.Configuration
 	using Rhino.Mocks;
 	using Saga;
 	using SubscriptionConnectors;
+	using TestFramework.Sagas;
 
-	[Scenario]
+    [Scenario]
 	public class When_a_saga_is_inspected
 	{
 		SagaConnector<SimpleSaga> _factory;

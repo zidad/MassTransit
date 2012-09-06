@@ -15,8 +15,8 @@ namespace MassTransit.Tests.Configuration
     using System;
     using Magnum.Extensions;
     using Magnum.TestFramework;
-    using Messages;
     using TestFramework;
+    using TestFramework.Messages;
 
     [Scenario]
     public class When_subscribing_a_consumer_to_the_bus

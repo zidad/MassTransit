@@ -20,8 +20,8 @@ namespace MassTransit.Tests.Serialization
     using Magnum.TestFramework;
     using MassTransit.Serialization;
     using MassTransit.Services.Subscriptions.Messages;
-    using Messages;
     using NUnit.Framework;
+    using TestFramework.Messages;
 
     public abstract class GivenASimpleMessage<TSerializer> where TSerializer : IMessageSerializer, new()
     {

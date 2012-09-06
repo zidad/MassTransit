@@ -16,7 +16,7 @@ namespace MassTransit.Tests.Load
 	using System.Threading;
 	using Magnum.Extensions;
 	using NUnit.Framework;
-	using Tests.Messages;
+	using TestFramework.Messages;
 	using TextFixtures;
 
 	[TestFixture]

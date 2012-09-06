@@ -15,10 +15,10 @@ namespace MassTransit.Tests.Pipeline
 	using MassTransit.Pipeline;
 	using MassTransit.Pipeline.Configuration;
 	using MassTransit.Pipeline.Inspectors;
-	using Messages;
 	using NUnit.Framework;
+	using TestFramework.Messages;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_subscription_a_component_to_the_pipeline
 	{
 		[SetUp]

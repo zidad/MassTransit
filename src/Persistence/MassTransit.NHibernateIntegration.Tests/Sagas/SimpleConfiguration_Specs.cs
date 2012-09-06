@@ -15,9 +15,9 @@ namespace MassTransit.NHibernateIntegration.Tests.Sagas
 	using Magnum.Extensions;
 	using Magnum.TestFramework;
 	using MassTransit.Tests;
-	using MassTransit.Tests.Messages;
+	using TestFramework.Messages;
 
-	[Scenario]
+    [Scenario]
 	public class When_configuring_a_service_bus_easily
 	{
 		[When]

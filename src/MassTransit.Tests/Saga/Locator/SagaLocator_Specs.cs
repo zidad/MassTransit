@@ -18,6 +18,7 @@ namespace MassTransit.Tests.Saga.Locator
     using MassTransit.Saga;
     using NUnit.Framework;
     using TestFramework;
+    using TestFramework.Sagas;
 
     [TestFixture]
     public class When_using_the_state_machine_with_noncorrelated_messages
