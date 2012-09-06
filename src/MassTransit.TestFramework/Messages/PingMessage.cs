@@ -49,4 +49,6 @@ namespace MassTransit.TestFramework.Messages
             return _id.GetHashCode();
         }
     }
+
+    public class Pingger{}
 }

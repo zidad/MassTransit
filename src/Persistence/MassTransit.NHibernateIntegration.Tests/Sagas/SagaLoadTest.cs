@@ -12,10 +12,10 @@
 // specific language governing permissions and limitations under the License.
 namespace MassTransit.NHibernateIntegration.Tests.Sagas
 {
-	using MassTransit.Tests.TextFixtures;
 	using NUnit.Framework;
+	using TestFramework.Fixtures;
 
-	[TestFixture, Category("Integration")]
+    [TestFixture, Category("Integration")]
 	public class SagaLoadTest :
 		LoopbackTestFixture
 	{

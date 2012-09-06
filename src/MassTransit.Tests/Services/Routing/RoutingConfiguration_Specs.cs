@@ -15,6 +15,7 @@ namespace MassTransit.Tests.Services.Routing
 	using System;
 	using MassTransit.Services.Routing.Configuration;
 	using NUnit.Framework;
+	using TestFramework.Fixtures;
 	using TestFramework.Messages;
 	using TextFixtures;
 	using TestFramework;

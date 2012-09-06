@@ -16,8 +16,9 @@ namespace MassTransit.Tests.Saga.StateMachine
 	using Locator;
 	using Magnum.TestFramework;
 	using NUnit.Framework;
+	using TestFramework.Sagas;
 
-	[TestFixture]
+    [TestFixture]
 	public class Inspecting_a_state_machine_driven_saga : 
 		StateMachineSubscriberTestBase
 	{

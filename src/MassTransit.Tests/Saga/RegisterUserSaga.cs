@@ -18,8 +18,9 @@ namespace MassTransit.Tests.Saga
 	using MassTransit.Services.Timeout.Messages;
 	using Messages;
 	using TestFramework;
+	using TestFramework.Sagas;
 
-	/// <summary>
+    /// <summary>
 	/// 
 	/// So here is the deal
 	/// The saga is a class that contains the state and behavior of the saga

@@ -10,22 +10,22 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests.TextFixtures
+namespace MassTransit.TestFramework.Fixtures
 {
-	using BusConfigurators;
-	using MassTransit.Transports.Loopback;
-	using NUnit.Framework;
+    using BusConfigurators;
+    using MassTransit.Transports.Loopback;
+    using NUnit.Framework;
 
-	[TestFixture]
+    [TestFixture]
 	public class LoopbackTestFixture :
 		EndpointTestFixture<LoopbackTransportFactory>
 	{
+
 		public IServiceBus LocalBus { get; private set; }
 
-		protected override void EstablishContext()
+        [SetUp]
+		protected virtual void EstablishContext()
 		{
-			base.EstablishContext();
-
 			LocalBus = ServiceBusFactory.New(x =>
 				{
 					x.ReceiveFrom("loopback://localhost/mt_client");
@@ -38,12 +38,11 @@ namespace MassTransit.Tests.TextFixtures
 		{
 		}
 
-		protected override void TeardownContext()
+        [TearDown]
+		protected virtual void TeardownContext()
 		{
 			LocalBus.Dispose();
 			LocalBus = null;
-
-			base.TeardownContext();
 		}
 	}
 }

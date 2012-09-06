@@ -23,6 +23,8 @@ namespace MassTransit.Tests.Timeouts
     using MassTransit.Services.Timeout.Messages;
     using MassTransit.Services.Timeout.Server;
     using NUnit.Framework;
+    using TestFramework;
+    using TestFramework.Fixtures;
     using TextFixtures;
     using MassTransit.Testing;
 

@@ -13,9 +13,7 @@
 
 using System;
 using System.Data.SQLite;
-using MassTransit.NHibernateIntegration.Saga;
 using MassTransit.NHibernateIntegration.Tests.Sagas;
-using MassTransit.Tests.Saga.StateMachine;
 using MassTransit.Util;
 using NHibernate.Cache;
 using NHibernate.Dialect;
@@ -25,7 +23,9 @@ using Environment = NHibernate.Cfg.Environment;
 
 namespace MassTransit.NHibernateIntegration.Tests.Framework
 {
-	public static class TestConfigurator
+    using TestFramework.Sagas;
+
+    public static class TestConfigurator
 	{
 		public static NHibernate.Cfg.Configuration CreateConfiguration([CanBeNull] string connectionString, [CanBeNull] Action<NHibernate.Cfg.Configuration> configurator)
 		{

@@ -16,6 +16,8 @@ namespace MassTransit.Tests
     using BusConfigurators;
     using Magnum.Extensions;
     using Magnum.TestFramework;
+    using TestFramework;
+    using TestFramework.Fixtures;
     using TextFixtures;
 
     [Scenario]

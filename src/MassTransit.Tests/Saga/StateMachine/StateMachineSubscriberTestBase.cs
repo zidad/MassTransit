@@ -17,8 +17,9 @@ namespace MassTransit.Tests.Saga.StateMachine
 	using Locator;
 	using MassTransit.Saga.Configuration;
 	using NUnit.Framework;
+	using TestFramework.Sagas;
 
-	public class StateMachineSubscriberTestBase
+    public class StateMachineSubscriberTestBase
 	{
 		protected EventInspectorResult<TestSaga>[] Results;
 

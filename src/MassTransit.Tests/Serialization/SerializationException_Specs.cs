@@ -17,6 +17,7 @@ namespace MassTransit.Tests.Serialization
     using Magnum.TestFramework;
     using MassTransit.Transports;
     using TestFramework;
+    using TestFramework.Fixtures;
     using TextFixtures;
     using Util;
 

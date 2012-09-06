@@ -17,8 +17,9 @@ namespace MassTransit.Tests.Serialization
 	using Magnum.TestFramework;
 	using MassTransit.Serialization;
 	using NUnit.Framework;
+	using TestFramework;
 
-	public abstract class SerializationTest<TSerializer>
+    public abstract class SerializationTest<TSerializer>
 		where TSerializer : IMessageSerializer, new()
 	{
 		IMessageSerializer _serializer;

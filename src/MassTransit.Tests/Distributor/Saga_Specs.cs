@@ -10,6 +10,7 @@
     using MassTransit.Saga;
     using MassTransit.Testing;
     using NUnit.Framework;
+    using TestFramework;
     using TextFixtures;
 
     [TestFixture]

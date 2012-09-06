@@ -14,6 +14,7 @@ namespace MassTransit.Tests.Configuration
 {
 	using Magnum.Extensions;
 	using Magnum.TestFramework;
+	using TestFramework;
 	using TestFramework.Messages;
 
     [Scenario]

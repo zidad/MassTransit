@@ -14,7 +14,7 @@ namespace MassTransit.NHibernateIntegration.Tests.Sagas
 {
 	using Magnum.Extensions;
 	using Magnum.TestFramework;
-	using MassTransit.Tests;
+	using TestFramework;
 	using TestFramework.Messages;
 
     [Scenario]

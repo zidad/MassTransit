@@ -14,6 +14,7 @@ namespace MassTransit.Tests.Pipeline
 {
 	using Magnum.TestFramework;
 	using NUnit.Framework;
+	using TestFramework.Fixtures;
 	using TextFixtures;
 
 	[Scenario]

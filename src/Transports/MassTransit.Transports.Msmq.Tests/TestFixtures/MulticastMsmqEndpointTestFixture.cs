@@ -14,9 +14,9 @@ namespace MassTransit.Transports.Msmq.Tests.TestFixtures
 {
 	using System;
 	using BusConfigurators;
-	using MassTransit.Tests.TextFixtures;
+	using TestFramework.Fixtures;
 
-	public class MulticastMsmqEndpointTestFixture :
+    public class MulticastMsmqEndpointTestFixture :
 		EndpointTestFixture<MsmqTransportFactory>
 	{
 		protected Uri LocalEndpointUri { get; set; }

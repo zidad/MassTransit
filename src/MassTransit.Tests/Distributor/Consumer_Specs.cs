@@ -19,6 +19,7 @@ namespace MassTransit.Tests.Distributor
     using MassTransit.Distributor.Messages;
     using MassTransit.Testing;
     using NUnit.Framework;
+    using TestFramework;
     using TextFixtures;
 
     [TestFixture]

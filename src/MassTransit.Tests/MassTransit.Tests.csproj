@@ -166,7 +166,6 @@
     <Compile Include="Load\Messages\FirstResponse.cs" />
     <Compile Include="Distributor\ServiceInstance.cs" />
     <Compile Include="Fault_Specs.cs" />
-    <Compile Include="FutureMessage.cs" />
     <Compile Include="Groups\Group_Specs.cs" />
     <Compile Include="InterfaceSubscription_Specs.cs" />
     <Compile Include="Load\RequestResponse_LoadTest.cs" />
@@ -216,7 +215,6 @@
     <Compile Include="Saga\Locator\SomeClass.cs" />
     <Compile Include="Retry_Specs.cs" />
     <Compile Include="Saga\Locator\SagaLocator_Specs.cs" />
-    <Compile Include="Saga\Locator\TestSaga.cs" />
     <Compile Include="Saga\StateMachine\AutoStateMachineSaga.cs" />
     <Compile Include="Saga\StateMachine\AutoStateMachine_Specs.cs" />
     <Compile Include="Saga\StateMachine\Inspector_Specs.cs" />
@@ -250,7 +248,6 @@
     <Compile Include="Subscriptions\Removing_a_subscription_client.cs" />
     <Compile Include="Subscriptions\SubscriptionService_Specs.cs" />
     <Compile Include="Subscriptions\CorrelatedSubscription_Specs.cs" />
-    <Compile Include="TestExtensions.cs" />
     <Compile Include="TextFixtures\EndpointCacheProxy.cs" />
     <Compile Include="TextFixtures\SubscriptionServiceTestFixture.cs" />
     <Compile Include="Transports\LoopbackTransportContract.cs" />
@@ -268,18 +265,14 @@
     <Compile Include="PublishSubscribe_Specs.cs" />
     <Compile Include="PublishToConsumer_Specs.cs" />
     <Compile Include="RequestReply_Specs.cs" />
-    <Compile Include="Saga\Messages\CorrelatedMessage.cs" />
-    <Compile Include="Saga\Messages\RegisterUser.cs" />
     <Compile Include="Saga\Messages\SendUserVerificationEmail.cs" />
     <Compile Include="Saga\Messages\SendValidationEmail.cs" />
     <Compile Include="Saga\Messages\UserRegistrationComplete.cs" />
     <Compile Include="Saga\Messages\UserRegistrationPending.cs" />
-    <Compile Include="Saga\Messages\UserValidated.cs" />
     <Compile Include="Saga\Messages\UserVerificationEmailSent.cs" />
     <Compile Include="Saga\RegisterUserController.cs" />
     <Compile Include="Saga\RegisterUserSaga.cs" />
     <Compile Include="Saga\RegisterUser_Specs.cs" />
-    <Compile Include="Saga\StateMachine\RegisterUserStateMachine.cs" />
     <Compile Include="Saga\StateMachine\SagaStateMachine_Specs.cs" />
     <Compile Include="Messages\ClientMessage.cs" />
     <Compile Include="Messages\DeleteMessage.cs" />
@@ -292,9 +285,7 @@
     <Compile Include="TestConsumers\TestMessageConsumer.cs" />
     <Compile Include="TestConsumers\TestReplyService.cs" />
     <Compile Include="TestConsumers\TestSelectiveConsumer.cs" />
-    <Compile Include="TextFixtures\EndpointTestFixture.cs" />
     <Compile Include="TextFixtures\LoopbackLocalAndRemoteTestFixture.cs" />
-    <Compile Include="TextFixtures\LoopbackTestFixture.cs" />
     <Compile Include="Timeouts\TimeoutService_Specs.cs" />
     <Compile Include="Transports\TransactionalEndpointContract.cs" />
   </ItemGroup>

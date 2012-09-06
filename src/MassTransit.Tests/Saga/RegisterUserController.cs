@@ -16,8 +16,9 @@ namespace MassTransit.Tests.Saga
 	using System.Threading;
 	using Magnum.Extensions;
 	using Messages;
+	using TestFramework.Sagas;
 
-	public class RegisterUserController :
+    public class RegisterUserController :
 		Consumes<UserRegistrationPending>.For<Guid>,
 		Consumes<UserRegistrationComplete>.For<Guid>
 	{

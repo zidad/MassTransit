@@ -16,8 +16,9 @@ namespace MassTransit.Tests.TextFixtures
 	using MassTransit.Subscriptions.Coordinator;
 	using MassTransit.Transports.Loopback;
 	using NUnit.Framework;
+	using TestFramework.Fixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class LoopbackLocalAndRemoteTestFixture :
 		EndpointTestFixture<LoopbackTransportFactory>
 	{

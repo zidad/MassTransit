@@ -20,7 +20,8 @@ namespace MassTransit.Tests.Saga.StateMachine
     using Messages;
     using NUnit.Framework;
     using TestFramework;
-    using TextFixtures;
+    using TestFramework.Fixtures;
+    using TestFramework.Sagas;
 
     [TestFixture]
     public class AutoStateMachine_Specs :

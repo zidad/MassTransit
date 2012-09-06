@@ -17,6 +17,7 @@ namespace MassTransit.Tests.Saga.StateMachine
     using Magnum.TestFramework;
     using Messages;
     using NUnit.Framework;
+    using TestFramework.Sagas;
 
     [TestFixture]
     public class SagaStateMachine_Specs

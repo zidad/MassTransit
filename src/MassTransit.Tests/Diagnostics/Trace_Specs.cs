@@ -17,6 +17,7 @@ namespace MassTransit.Tests.Diagnostics
     using MassTransit.Diagnostics;
     using MassTransit.Diagnostics.Tracing;
     using MassTransit.Testing;
+    using TestFramework;
 
     [Scenario]
     public class When_tracing_messages_on_the_bus

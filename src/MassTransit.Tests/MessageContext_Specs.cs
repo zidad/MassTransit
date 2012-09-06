@@ -279,9 +279,9 @@ namespace MassTransit.Tests
         [Test]
         public void The_method_should_be_called_for_each_destination_endpoint()
         {
-            LocalBus.SubscribeHandler<PingMessage>(x => { });
+            LocalBus.SubscribeHandler<Pingger>(x => { });
 
-            var ping = new PingMessage();
+            var ping = new Pingger();
 
             var consumers = new List<Uri>();
 
@@ -326,13 +326,13 @@ namespace MassTransit.Tests
         [Test]
         public void The_method_should_not_carry_over_to_the_next_call_context()
         {
-            var ping = new PingMessage();
+            var ping = new Pingger();
 
             var consumers = new List<Uri>();
 
             LocalBus.Publish(ping, x => { x.ForEachSubscriber(address => consumers.Add(address.Uri)); });
 
-            LocalBus.SubscribeHandler<PingMessage>(x => { });
+            LocalBus.SubscribeHandler<Pingger>(x => { });
 
             LocalBus.Publish(ping);
 

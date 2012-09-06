@@ -18,6 +18,7 @@ namespace MassTransit.Tests.Serialization
 	using Magnum.TestFramework;
 	using MassTransit.Serialization;
 	using NUnit.Framework;
+	using TestFramework;
 	using TestFramework.Messages;
 
     public abstract class PreSharedKeyEncryptedSerialization_Specs<TSerializer>

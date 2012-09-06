@@ -14,8 +14,8 @@ namespace MassTransit.Transports.Msmq.Tests.TestFixtures
 {
     using System;
     using BusConfigurators;
-    using MassTransit.Tests.TextFixtures;
     using Subscriptions.Coordinator;
+    using TestFramework.Fixtures;
 
     public class MsmqEndpointTestFixture :
         EndpointTestFixture<MsmqTransportFactory>

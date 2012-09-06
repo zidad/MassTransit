@@ -13,8 +13,9 @@
 namespace MassTransit.Tests.Saga.Messages
 {
 	using System;
+	using TestFramework.Sagas;
 
-	[Serializable]
+    [Serializable]
 	public class UserRegistrationComplete :
 		CorrelatedMessage
 	{

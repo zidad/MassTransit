@@ -23,13 +23,13 @@ namespace MassTransit.NHibernateIntegration.Tests.Sagas
     using System.Threading;
     using Magnum.Extensions;
     using MassTransit.Saga;
-    using MassTransit.Tests.TextFixtures;
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
     using NUnit.Framework;
     using Saga;
     using TestFramework;
+    using TestFramework.Fixtures;
     using log4net;
 
     [TestFixture, Category("Integration")]

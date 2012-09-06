@@ -69,7 +69,9 @@ namespace MassTransit.TestFramework.Fixtures
 					x.SetReceiveTimeout(150.Milliseconds());
 					x.EnableAutoStart();
 				});
-		}
+		
+            EstablishContext();
+        }
 
 		/// <summary>
 		/// Tears down the buses,
@@ -78,6 +80,8 @@ namespace MassTransit.TestFramework.Fixtures
 		[TestFixtureTearDown]
 		public void FixtureTeardown()
 		{
+            TeardownContext();
+
 			TeardownBuses();
 
 			if (EndpointCache != null)
@@ -220,5 +224,16 @@ namespace MassTransit.TestFramework.Fixtures
 		protected virtual void ConfigureServiceBus(Uri uri, ServiceBusConfigurator configurator)
 		{
 		}
+
+
+
+        protected virtual void EstablishContext()
+        {
+            
+        }
+        protected virtual void TeardownContext()
+        {
+            
+        }
 	}
 }

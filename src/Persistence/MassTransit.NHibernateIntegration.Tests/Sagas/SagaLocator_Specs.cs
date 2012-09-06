@@ -19,14 +19,12 @@ namespace MassTransit.NHibernateIntegration.Tests.Sagas
     using System.Linq;
     using Magnum.Extensions;
     using MassTransit.Saga;
-    using MassTransit.Tests;
-    using MassTransit.Tests.Saga;
-    using MassTransit.Tests.Saga.Locator;
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
     using NUnit.Framework;
     using Saga;
+    using TestFramework;
     using TestFramework.Messages;
     using TestFramework.Sagas;
 

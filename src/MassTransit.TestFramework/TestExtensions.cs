@@ -10,18 +10,17 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests
+namespace MassTransit.TestFramework
 {
-	using System;
-	using System.Collections;
-	using System.Collections.Generic;
-	using System.IO;
-	using System.Reflection;
-	using Context;
-	using Magnum.Extensions;
-	using NUnit.Framework;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using Context;
+    using Magnum.Extensions;
+    using NUnit.Framework;
 
-	public static class TestExtensions
+    public static class TestExtensions
 	{
 		public static void ShouldBeEqualTo<T>(this T target, object expected)
 			where T : class

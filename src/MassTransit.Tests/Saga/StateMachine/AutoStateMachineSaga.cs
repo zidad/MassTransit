@@ -17,8 +17,9 @@ namespace MassTransit.Tests.Saga.StateMachine
 	using Magnum.StateMachine;
 	using MassTransit.Saga;
 	using Messages;
+	using TestFramework.Sagas;
 
-	[Serializable]
+    [Serializable]
 	public class AutoStateMachineSaga :
 		SagaStateMachine<AutoStateMachineSaga>,
 		ISaga

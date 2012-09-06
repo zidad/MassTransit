@@ -22,6 +22,7 @@ namespace MassTransit.Tests.Saga.StateMachine
 	using MassTransit.Saga;
 	using NUnit.Framework;
 	using TestFramework;
+	using TestFramework.Fixtures;
 	using TestFramework.Sagas;
 	using TextFixtures;
 

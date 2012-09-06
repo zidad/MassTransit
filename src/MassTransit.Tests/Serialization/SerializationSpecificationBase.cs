@@ -20,6 +20,7 @@ namespace MassTransit.Tests.Serialization
     using Magnum.TestFramework;
     using MassTransit.Serialization;
     using NUnit.Framework;
+    using TestFramework;
 
     public class SerializationSpecificationBase<TSerializer> 
 		where TSerializer : IMessageSerializer, new()
