@@ -10,23 +10,22 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests.TestConsumers
+namespace MassTransit.TestFramework.Performance.Performance
 {
-	using Context;
-	using Magnum.Reflection;
+    using System;
 
-	public class TestReplyService<TMessage, TKey, TReplyMessage> :
-		TestConsumerBase<TMessage>,
-		Consumes<TMessage>.All
-		where TMessage : class, CorrelatedBy<TKey>
-		where TReplyMessage : class, CorrelatedBy<TKey>
+    [Serializable]
+	public class LoadedRequest
 	{
-		public override void Consume(TMessage message)
+		public LoadedRequest(int valueCount)
 		{
-			base.Consume(message);
-
-			var reply = FastActivator<TReplyMessage>.Create(message.CorrelationId);
-			ContextStorage.Context().Respond(reply);
+			Values = new int[valueCount];
 		}
+
+		protected LoadedRequest()
+		{
+		}
+
+		public int[] Values { get; set; }
 	}
 }

@@ -14,12 +14,12 @@ namespace MassTransit.Tests
 {
 	using System;
 	using NUnit.Framework;
-	using TestConsumers;
 	using TestFramework;
+	using TestFramework.Fixtures;
 	using TestFramework.Messages;
-	using TextFixtures;
+	using TestFramework.TestConsumers;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_a_message_is_published :
 		LoopbackLocalAndRemoteTestFixture
 	{

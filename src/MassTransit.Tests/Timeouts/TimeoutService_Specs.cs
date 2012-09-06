@@ -25,7 +25,6 @@ namespace MassTransit.Tests.Timeouts
     using NUnit.Framework;
     using TestFramework;
     using TestFramework.Fixtures;
-    using TextFixtures;
     using MassTransit.Testing;
 
     [TestFixture]

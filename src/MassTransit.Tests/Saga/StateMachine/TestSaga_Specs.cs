@@ -24,9 +24,8 @@ namespace MassTransit.Tests.Saga.StateMachine
 	using TestFramework;
 	using TestFramework.Fixtures;
 	using TestFramework.Sagas;
-	using TextFixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_an_initiating_message_for_a_saga_arrives :
 		LoopbackTestFixture
 	{

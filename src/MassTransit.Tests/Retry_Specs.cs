@@ -17,9 +17,8 @@ namespace MassTransit.Tests
 	using TestFramework;
 	using TestFramework.Fixtures;
 	using TestFramework.Messages;
-	using TextFixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_a_message_consumer_specifies_that_it_should_retry_a_message :
 		LoopbackTestFixture
 	{

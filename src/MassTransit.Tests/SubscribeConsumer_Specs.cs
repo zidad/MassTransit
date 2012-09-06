@@ -20,9 +20,8 @@ namespace MassTransit.Tests
 	using TestFramework;
 	using TestFramework.Fixtures;
 	using TestFramework.Messages;
-	using TextFixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class A_subscribed_consumer
 		: LoopbackTestFixture
 	{

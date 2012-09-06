@@ -21,7 +21,6 @@ namespace MassTransit.Tests.Services.HealthMonitoring
 	using MassTransit.Transports.Loopback;
 	using NUnit.Framework;
 	using TestFramework.Fixtures;
-	using TextFixtures;
 	using TestFramework;
 
 	[TestFixture]

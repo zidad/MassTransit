@@ -17,7 +17,7 @@ namespace MassTransit.Tests
     using MassTransit.Pipeline.Inspectors;
     using NUnit.Framework;
     using TestFramework;
-    using TextFixtures;
+    using TestFramework.Fixtures;
 
     [TestFixture]
     public class Sending_a_message_that_implements_an_interface :

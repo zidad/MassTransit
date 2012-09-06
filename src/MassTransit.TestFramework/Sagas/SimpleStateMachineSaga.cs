@@ -10,14 +10,13 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests.Examples.Sagas
+namespace MassTransit.TestFramework.Sagas
 {
-	using System;
-	using Magnum.StateMachine;
-	using MassTransit.Saga;
-	using Messages;
+    using System;
+    using Magnum.StateMachine;
+    using Saga;
 
-	public class SimpleStateMachineSaga :
+    public class SimpleStateMachineSaga :
 		SagaStateMachine<SimpleStateMachineSaga>,
 		ISaga
 	{

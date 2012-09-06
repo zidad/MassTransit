@@ -142,13 +142,8 @@
     <Compile Include="Examples\Given_a_consumer_is_subscribed_to_a_message_on_a_remote_bus.cs" />
     <Compile Include="Examples\Given_a_consumer_is_subscribed_to_a_message_on_the_remote_bus.cs" />
     <Compile Include="Examples\Given_a_pong_service.cs" />
-    <Compile Include="Examples\Messages\SimpleMessage.cs" />
     <Compile Include="Examples\Sagas\Given_a_simple_saga_does_not_exist.cs" />
     <Compile Include="Examples\Sagas\Given_a_simple_saga_exists_and_is_waiting_for_approval.cs" />
-    <Compile Include="Examples\Sagas\Messages\ApproveSimpleCustomer.cs" />
-    <Compile Include="Examples\Sagas\Messages\FinishSimpleSaga.cs" />
-    <Compile Include="Examples\Sagas\Messages\StartSimpleSaga.cs" />
-    <Compile Include="Examples\Sagas\SimpleStateMachineSaga.cs" />
     <Compile Include="Examples\Sagas\When_an_approval_message_is_published.cs" />
     <Compile Include="Examples\Sagas\When_a_start_message_is_received.cs" />
     <Compile Include="Examples\When_a_message_is_published_to_the_bus.cs" />
@@ -170,9 +165,6 @@
     <Compile Include="NewId_\NetworkAddress_Specs.cs" />
     <Compile Include="NewId_\NewId_Specs.cs" />
     <Compile Include="NewId_\Usage_Specs.cs" />
-    <Compile Include="Performance\EndpointLoadTest.cs" />
-    <Compile Include="Performance\LoadedRequest.cs" />
-    <Compile Include="Performance\LoadedResponse.cs" />
     <Compile Include="PublishRequest_Specs.cs" />
     <Compile Include="Saga\CustomerRegistrationSaga.cs" />
     <Compile Include="Saga\CustomerRegistrationSagaTest.cs" />
@@ -240,7 +232,6 @@
     <Compile Include="Subscriptions\Removing_a_subscription_client.cs" />
     <Compile Include="Subscriptions\SubscriptionService_Specs.cs" />
     <Compile Include="Subscriptions\CorrelatedSubscription_Specs.cs" />
-    <Compile Include="TextFixtures\EndpointCacheProxy.cs" />
     <Compile Include="Transports\LoopbackTransportContract.cs" />
     <Compile Include="Saga\InitiateSaga_Specs.cs" />
     <Compile Include="Pipeline\MessageFilter_Specs.cs" />
@@ -270,14 +261,7 @@
     <Compile Include="MessageQueueEndpoint_MeetsCriteria.cs" />
     <Compile Include="Messages\UpdateMessage.cs" />
     <Compile Include="Messages\UpdateAcceptedMessage.cs" />
-    <Compile Include="TestConsumers\TestConsumerBase.cs" />
-    <Compile Include="TestConsumers\TestCorrelatedConsumer.cs" />
-    <Compile Include="TestConsumers\TestMessageConsumer.cs" />
-    <Compile Include="TestConsumers\TestReplyService.cs" />
-    <Compile Include="TestConsumers\TestSelectiveConsumer.cs" />
-    <Compile Include="TextFixtures\LoopbackLocalAndRemoteTestFixture.cs" />
     <Compile Include="Timeouts\TimeoutService_Specs.cs" />
-    <Compile Include="Transports\TransactionalEndpointContract.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Loggers\MassTransit.Log4NetIntegration\MassTransit.Log4NetIntegration.csproj">
@@ -312,10 +296,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Load\Messages\" />
     <Folder Include="Reactive\Samples\" />
     <Folder Include="Services\LoadBalancer\" />
     <Folder Include="Services\Metadata\" />
+    <Folder Include="TextFixtures\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

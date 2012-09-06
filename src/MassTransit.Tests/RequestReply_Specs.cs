@@ -15,9 +15,9 @@ namespace MassTransit.Tests
 	using System;
 	using BusConfigurators;
 	using NUnit.Framework;
-	using TestConsumers;
+	using TestFramework.Fixtures;
 	using TestFramework.Messages;
-	using TextFixtures;
+	using TestFramework.TestConsumers;
 	using TestFramework;
 
 	[TestFixture]

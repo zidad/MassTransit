@@ -14,8 +14,9 @@ namespace MassTransit.Tests.Examples.Sagas
 {
 	using Magnum.TestFramework;
 	using TestFramework.Fixtures;
+	using TestFramework.Sagas;
 
-	[Scenario]
+    [Scenario]
 	public class Given_a_simple_saga_does_not_exist :
 		SagaTestFixture<SimpleStateMachineSaga>
 	{

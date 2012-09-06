@@ -11,7 +11,7 @@
     using MassTransit.Testing;
     using NUnit.Framework;
     using TestFramework;
-    using TextFixtures;
+    using TestFramework.Fixtures;
 
     [TestFixture]
     public class Using_a_distributor_saga :

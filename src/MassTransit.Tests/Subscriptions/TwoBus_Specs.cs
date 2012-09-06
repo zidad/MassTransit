@@ -13,14 +13,14 @@
 namespace MassTransit.Tests.Subscriptions
 {
 	using System;
-	using Examples.Messages;
 	using Magnum.Extensions;
 	using Magnum.TestFramework;
 	using MassTransit.Transports.Loopback;
 	using TestFramework;
 	using TestFramework.Fixtures;
+	using TestFramework.Messages;
 
-	[Scenario]
+    [Scenario]
 	public class When_publishing_to_a_remote_subscriber :
 		TwoBusTestFixture<LoopbackTransportFactory>
 	{

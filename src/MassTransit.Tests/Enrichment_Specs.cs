@@ -18,8 +18,8 @@ namespace MassTransit.Tests
     using Magnum.TestFramework;
     using NUnit.Framework;
     using TestFramework;
-    using TextFixtures;
     using MassTransit.Testing;
+    using TestFramework.Fixtures;
 
     [TestFixture]
     public class Putting_two_bodies_into_one_message :

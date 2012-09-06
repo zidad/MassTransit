@@ -5,8 +5,8 @@
     using Magnum.TestFramework;
     using NUnit.Framework;
     using TestFramework;
-    using TextFixtures;
     using MassTransit.Testing;
+    using TestFramework.Fixtures;
 
     [TestFixture]
     public class When_a_static_and_dynamic_subscription_are_on_the_same_bus :

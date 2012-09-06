@@ -17,9 +17,9 @@ namespace MassTransit.Tests.Subscriptions
 	using Magnum.TestFramework;
 	using NUnit.Framework;
 	using TestFramework;
-	using TextFixtures;
+	using TestFramework.Fixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_a_message_is_received_that_is_polymorphic :
 		LoopbackLocalAndRemoteTestFixture
 	{

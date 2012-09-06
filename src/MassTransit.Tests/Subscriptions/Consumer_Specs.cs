@@ -16,9 +16,9 @@ namespace MassTransit.Tests.Subscriptions
     using BusConfigurators;
     using Magnum.Extensions;
     using NUnit.Framework;
-    using TestConsumers;
     using TestFramework;
-    using TextFixtures;
+    using TestFramework.Fixtures;
+    using TestFramework.TestConsumers;
 
     [TestFixture]
     public class A_consumer_with_two_message_contracts :

@@ -18,7 +18,6 @@ namespace MassTransit.Tests.Serialization
     using MassTransit.Transports;
     using TestFramework;
     using TestFramework.Fixtures;
-    using TextFixtures;
     using Util;
 
     [Scenario]

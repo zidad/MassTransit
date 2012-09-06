@@ -18,8 +18,8 @@ namespace MassTransit.Tests
     using Magnum.TestFramework;
     using NUnit.Framework;
     using TestFramework;
+    using TestFramework.Fixtures;
     using TestFramework.Messages;
-    using TextFixtures;
 
     [TestFixture]
     public class Publishing_a_simple_request :

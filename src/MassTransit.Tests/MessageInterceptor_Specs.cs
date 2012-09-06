@@ -18,7 +18,6 @@ namespace MassTransit.Tests
     using NUnit.Framework;
     using TestFramework.Fixtures;
     using TestFramework.Messages;
-    using TextFixtures;
 
     [TestFixture]
     public class MessageInterceptor_Specs

@@ -17,10 +17,10 @@ namespace MassTransit.Tests.Serialization
 	using MassTransit.Pipeline.Configuration;
 	using MassTransit.Serialization;
 	using NUnit.Framework;
-	using TestConsumers;
+	using TestFramework.TestConsumers;
 
-	
-	public abstract class Deserializing_an_interface<TSerializer> :
+
+    public abstract class Deserializing_an_interface<TSerializer> :
 		SerializationSpecificationBase<TSerializer> where TSerializer : IMessageSerializer, new()
 	{
 		[Test]

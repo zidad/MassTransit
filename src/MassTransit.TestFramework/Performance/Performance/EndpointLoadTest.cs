@@ -10,14 +10,14 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests.Performance
+namespace MassTransit.TestFramework.Performance.Performance
 {
-	using System.Diagnostics;
-	using System.Threading;
-	using Magnum.Extensions;
-	using NUnit.Framework;
+    using System.Diagnostics;
+    using System.Threading;
+    using Magnum.Extensions;
+    using NUnit.Framework;
 
-	public class EndpointLoadTest
+    public class EndpointLoadTest
 	{
 		private readonly IServiceBus _bus;
 		private readonly int _messageCount;

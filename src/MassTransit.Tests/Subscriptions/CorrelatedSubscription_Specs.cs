@@ -16,9 +16,8 @@ namespace MassTransit.Tests.Subscriptions
 	using NUnit.Framework;
 	using TestFramework;
 	using TestFramework.Fixtures;
-	using TextFixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class Adding_a_correlated_subscription_via_the_subscription_client :
 		SubscriptionServiceTestFixture<LoopbackTransportFactory>
 	{

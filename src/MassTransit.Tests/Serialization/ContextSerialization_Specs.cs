@@ -17,10 +17,10 @@ namespace MassTransit.Tests.Serialization
 	using MassTransit.Serialization;
     using NUnit.Framework;
     using TestFramework;
+    using TestFramework.Fixtures;
     using TestFramework.Messages;
-    using TextFixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public abstract class When_sending_a_message_using_the_specified_serializer<TSerializer> :
 		LoopbackLocalAndRemoteTestFixture
 		where TSerializer : IMessageSerializer, new()

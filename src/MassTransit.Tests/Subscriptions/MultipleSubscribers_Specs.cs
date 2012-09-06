@@ -21,7 +21,7 @@ namespace MassTransit.Tests.Subscriptions
     using Magnum.TestFramework;
     using NUnit.Framework;
     using TestFramework;
-    using TextFixtures;
+    using TestFramework.Fixtures;
 
     [TestFixture]
     public class when_multiple_subscribers_to_same_message

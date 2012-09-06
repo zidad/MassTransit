@@ -15,9 +15,8 @@ namespace MassTransit.Tests.Pipeline
 	using Magnum.TestFramework;
 	using NUnit.Framework;
 	using TestFramework.Fixtures;
-	using TextFixtures;
 
-	[Scenario]
+    [Scenario]
 	public class When_intercepting_messages_as_they_are_published
 		: LoopbackTestFixture
 	{

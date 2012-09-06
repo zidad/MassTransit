@@ -23,9 +23,8 @@ namespace MassTransit.Tests.Services.Timeout
 	using NUnit.Framework;
 	using TestFramework;
 	using TestFramework.Fixtures;
-	using TextFixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_scheduling_two_sagas_of_the_same_timeout_id :
 		LoopbackTestFixture
 	{

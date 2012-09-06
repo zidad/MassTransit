@@ -18,7 +18,6 @@ namespace MassTransit.Tests
     using Magnum.TestFramework;
     using TestFramework;
     using TestFramework.Fixtures;
-    using TextFixtures;
 
     [Scenario]
     public class When_publishing_an_interface_message :

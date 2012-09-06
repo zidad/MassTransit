@@ -13,10 +13,10 @@
 namespace MassTransit.Tests.Examples.Sagas
 {
 	using Magnum.TestFramework;
-	using Messages;
 	using TestFramework;
+	using TestFramework.Sagas;
 
-	[Scenario]
+    [Scenario]
 	public class When_an_approval_message_is_published :
 		Given_a_simple_saga_exists_and_is_waiting_for_approval
 	{

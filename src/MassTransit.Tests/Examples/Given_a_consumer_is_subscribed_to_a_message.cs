@@ -13,10 +13,10 @@
 namespace MassTransit.Tests.Examples
 {
 	using Magnum.TestFramework;
-	using Messages;
 	using TestFramework;
+	using TestFramework.Messages;
 
-	[Scenario]
+    [Scenario]
 	public class Given_a_consumer_is_subscribed_to_a_message :
 		Given_a_standalone_service_bus
 	{

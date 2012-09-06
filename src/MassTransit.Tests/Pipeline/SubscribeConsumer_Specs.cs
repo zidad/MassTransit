@@ -20,9 +20,9 @@ namespace MassTransit.Tests.Pipeline
 	using MassTransit.Pipeline.Inspectors;
 	using NUnit.Framework;
 	using Rhino.Mocks;
-	using TestConsumers;
 	using TestFramework;
 	using TestFramework.Messages;
+	using TestFramework.TestConsumers;
 
     [TestFixture]
 	public class When_subscribing_a_consumer_to_the_pipeline

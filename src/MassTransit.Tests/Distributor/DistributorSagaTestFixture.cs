@@ -17,7 +17,6 @@ namespace MassTransit.Tests.Distributor
     using MassTransit.Saga;
     using MassTransit.Transports;
     using TestFramework.Fixtures;
-    using TextFixtures;
 
     public class DistributorSagaTestFixture<TTransportFactory> :
         SubscriptionServiceTestFixture<TTransportFactory>

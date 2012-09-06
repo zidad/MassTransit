@@ -10,13 +10,13 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests.Transports
+namespace MassTransit.TestFramework.Transports
 {
-	using System;
-	using System.Transactions;
-	using MassTransit.Transports;
-	using NUnit.Framework;
-	using TestFramework.Messages;
+    using System;
+    using System.Transactions;
+    using MassTransit.Transports;
+    using Messages;
+    using NUnit.Framework;
 
     public abstract class TransactionalEndpointContract<TTransportFactory>
 		where TTransportFactory : class, ITransportFactory, new()

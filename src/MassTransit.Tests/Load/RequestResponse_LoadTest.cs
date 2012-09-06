@@ -18,9 +18,8 @@ namespace MassTransit.Tests.Load
 	using NUnit.Framework;
 	using TestFramework.Fixtures;
 	using TestFramework.Messages;
-	using TextFixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class RequestResponse_LoadTest :
 		LoopbackTestFixture
 	{

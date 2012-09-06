@@ -19,7 +19,6 @@ namespace MassTransit.Tests
     using NUnit.Framework;
     using TestFramework;
     using TestFramework.Fixtures;
-    using TextFixtures;
 
     [TestFixture]
     public class Intercepting_a_consumer_factory :

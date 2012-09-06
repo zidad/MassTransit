@@ -17,10 +17,10 @@ namespace MassTransit.Tests
     using Magnum.Extensions;
     using Magnum.TestFramework;
     using NUnit.Framework;
-    using TestConsumers;
     using TestFramework;
+    using TestFramework.Fixtures;
     using TestFramework.Messages;
-    using TextFixtures;
+    using TestFramework.TestConsumers;
 
     [TestFixture]
     public class MessageContext_Specs :

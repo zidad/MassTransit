@@ -23,7 +23,7 @@ namespace MassTransit.Tests.Distributor
     using MassTransit.Testing;
     using NUnit.Framework;
     using TestFramework;
-    using TextFixtures;
+    using TestFramework.Fixtures;
 
     [TestFixture]
     public class Using_the_distributor_with_a_state_machine_saga :

@@ -18,9 +18,8 @@ namespace MassTransit.Tests.Groups
 	using System.Linq;
 	using NUnit.Framework;
 	using TestFramework.Fixtures;
-	using TextFixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class Group_Specs :
 		LoopbackTestFixture
 	{

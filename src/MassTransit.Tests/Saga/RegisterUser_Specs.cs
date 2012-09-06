@@ -19,8 +19,8 @@ namespace MassTransit.Tests.Saga
     using Messages;
     using NUnit.Framework;
     using TestFramework;
+    using TestFramework.Fixtures;
     using TestFramework.Sagas;
-    using TextFixtures;
 
     [TestFixture]
     public class When_a_unknown_user_registers :

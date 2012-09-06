@@ -16,12 +16,11 @@ namespace MassTransit.Tests
 	using MassTransit.Transports.Loopback;
 	using NUnit.Framework;
 	using Rhino.Mocks;
-	using TestConsumers;
 	using TestFramework.Fixtures;
 	using TestFramework.Messages;
-	using TextFixtures;
+	using TestFramework.TestConsumers;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_a_handler_subscription_is_added :
 		EndpointTestFixture<LoopbackTransportFactory>
 	{

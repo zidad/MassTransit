@@ -13,7 +13,6 @@
 namespace MassTransit.TestFramework.Fixtures
 {
 	using System;
-	using Diagnostics;
 	using Diagnostics.Introspection;
 
     public class EndpointCacheProxy :

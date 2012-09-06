@@ -18,9 +18,8 @@ namespace MassTransit.Tests
 	using NUnit.Framework;
 	using TestFramework;
 	using TestFramework.Fixtures;
-	using TextFixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_a_message_fault_occurs :
 		LoopbackTestFixture
 	{

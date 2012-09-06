@@ -14,7 +14,6 @@ namespace MassTransit.Testing.Scenarios
 {
 	using System;
 	using System.Collections.Generic;
-	using Diagnostics;
 	using Diagnostics.Introspection;
 	using Magnum.Extensions;
 	using TestDecorators;
@@ -144,32 +143,6 @@ namespace MassTransit.Testing.Scenarios
 			_disposed = true;
 		}
 
-		class EndpointCacheProxy :
-			IEndpointCache
-		{
-			readonly IEndpointCache _endpointCache;
-
-			public EndpointCacheProxy(IEndpointCache endpointCache)
-			{
-				_endpointCache = endpointCache;
-			}
-
-			public void Dispose()
-			{
-				// we don't dispose, since we're in testing
-			}
-
-			public IEndpoint GetEndpoint(Uri uri)
-			{
-				return _endpointCache.GetEndpoint(uri);
-			}
-
-		    public void Inspect(DiagnosticsProbe probe)
-		    {
-		        _endpointCache.Inspect(probe);
-		    }
-		}
-
 		~EndpointTestScenarioImpl()
 		{
 			Dispose(false);
@@ -179,5 +152,31 @@ namespace MassTransit.Testing.Scenarios
 		{
 			return new ServiceBusTestDecorator(bus, this);
 		}
+
+        class EndpointCacheProxy :
+        IEndpointCache
+        {
+            readonly IEndpointCache _endpointCache;
+
+            public EndpointCacheProxy(IEndpointCache endpointCache)
+            {
+                _endpointCache = endpointCache;
+            }
+
+            public void Dispose()
+            {
+                // we don't dispose, since we're in testing
+            }
+
+            public IEndpoint GetEndpoint(Uri uri)
+            {
+                return _endpointCache.GetEndpoint(uri);
+            }
+
+            public void Inspect(DiagnosticsProbe probe)
+            {
+                _endpointCache.Inspect(probe);
+            }
+        }
 	}
 }

@@ -23,7 +23,6 @@ namespace MassTransit.Tests
     using TestFramework;
     using TestFramework.Fixtures;
     using TestFramework.Messages;
-    using TextFixtures;
 
 #if NET40
     [TestFixture]

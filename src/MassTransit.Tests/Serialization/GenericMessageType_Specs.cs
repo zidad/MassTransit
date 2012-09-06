@@ -18,7 +18,6 @@ namespace MassTransit.Tests.Serialization
     using NUnit.Framework;
     using TestFramework;
     using TestFramework.Fixtures;
-    using TextFixtures;
 
     [TestFixture]
     public class When_sending_a_generic_message :

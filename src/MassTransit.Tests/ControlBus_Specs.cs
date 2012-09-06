@@ -15,9 +15,9 @@ namespace MassTransit.Tests
 	using BusConfigurators;
 	using Magnum.TestFramework;
 	using NUnit.Framework;
-	using TextFixtures;
+	using TestFramework.Fixtures;
 
-	[TestFixture]
+    [TestFixture]
 	public class When_creating_a_bus_with_a_separate_control_bus :
 		LoopbackLocalAndRemoteTestFixture
 	{

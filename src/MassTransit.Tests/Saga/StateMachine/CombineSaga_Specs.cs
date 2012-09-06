@@ -20,7 +20,6 @@ namespace MassTransit.Tests.Saga.StateMachine
     using NUnit.Framework;
     using TestFramework;
     using TestFramework.Fixtures;
-    using TextFixtures;
 
     [TestFixture]
     public class CombineSaga_Specs : LoopbackTestFixture

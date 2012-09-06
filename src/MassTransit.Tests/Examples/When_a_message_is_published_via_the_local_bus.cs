@@ -14,9 +14,9 @@ namespace MassTransit.Tests.Examples
 {
 	using Magnum.Extensions;
 	using Magnum.TestFramework;
-	using Messages;
+	using TestFramework.Messages;
 
-	[Scenario]
+    [Scenario]
 	public class When_a_message_is_published_via_the_local_bus :
 		Given_a_consumer_is_subscribed_to_a_message_on_a_remote_bus
 	{

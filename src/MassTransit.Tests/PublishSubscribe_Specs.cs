@@ -14,10 +14,9 @@ namespace MassTransit.Tests
 {
     using Magnum.Extensions;
     using NUnit.Framework;
-    using TestConsumers;
     using TestFramework.Fixtures;
     using TestFramework.Messages;
-    using TextFixtures;
+    using TestFramework.TestConsumers;
 
     [TestFixture]
     public class PublishSubscribe_Specs :

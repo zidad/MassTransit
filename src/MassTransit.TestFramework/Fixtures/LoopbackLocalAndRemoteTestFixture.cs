@@ -10,13 +10,12 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
-namespace MassTransit.Tests.TextFixtures
+namespace MassTransit.TestFramework.Fixtures
 {
-	using BusConfigurators;
-	using MassTransit.Subscriptions.Coordinator;
-	using MassTransit.Transports.Loopback;
-	using NUnit.Framework;
-	using TestFramework.Fixtures;
+    using BusConfigurators;
+    using MassTransit.Transports.Loopback;
+    using NUnit.Framework;
+    using Subscriptions.Coordinator;
 
     [TestFixture]
 	public class LoopbackLocalAndRemoteTestFixture :
