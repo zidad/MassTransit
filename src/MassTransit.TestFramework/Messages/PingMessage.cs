@@ -50,5 +50,6 @@ namespace MassTransit.TestFramework.Messages
         }
     }
 
+    //non-correlated ping
     public class Pingger{}
 }
