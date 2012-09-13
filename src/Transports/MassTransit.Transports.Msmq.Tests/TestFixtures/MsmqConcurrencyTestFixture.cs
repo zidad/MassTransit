@@ -38,7 +38,6 @@ namespace MassTransit.Transports.Msmq.Tests.TestFixtures
                         x.LogSqlInConsole = true;
                         x.LogFormattedSql = true;
                         x.IsolationLevel = IsolationLevel.RepeatableRead;
-//                        .DefaultSchema("dbo")
                     });
 
             SessionFactory = provider.GetSessionFactory();

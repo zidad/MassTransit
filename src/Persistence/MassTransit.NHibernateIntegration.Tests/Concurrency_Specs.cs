@@ -19,12 +19,12 @@ namespace MassTransit.NHibernateIntegration.Tests
     using System.Diagnostics;
     using System.Linq;
     using System.Threading;
-    using Magnum.Extensions;
     using MassTransit.Saga;
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
     using NUnit.Framework;
+    using Magnum.Extensions;
     using Saga;
     using TestFramework;
     using TestFramework.Fixtures;
@@ -46,7 +46,15 @@ namespace MassTransit.NHibernateIntegration.Tests
             var provider = new NHibernateSessionFactoryProvider(new Type[]
                 {
                     typeof (ConcurrentSagaMap), typeof (ConcurrentLegacySagaMap)
-                });
+                }, cfg =>
+                    {
+                        cfg.Dialect<NHibernate.Dialect.SQLiteDialect>();
+                        cfg.BatchSize = 100;
+                        cfg.LogSqlInConsole = true;
+                        cfg.LogFormattedSql = true;
+                        cfg.IsolationLevel = IsolationLevel.RepeatableRead;
+                        cfg.ConnectionString = "Data Source=test.db;Version=3;";
+                    });
 
             var sessionFactory = provider.GetSessionFactory();
 

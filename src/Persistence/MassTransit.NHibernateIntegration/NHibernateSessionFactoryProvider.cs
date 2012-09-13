@@ -22,6 +22,7 @@ namespace MassTransit.NHibernateIntegration
     using NHibernate.Cfg.Loquacious;
     using NHibernate.Cfg.MappingSchema;
     using NHibernate.Mapping.ByCode;
+    using Configuration = NHibernate.Cfg.Configuration;
     using NHibernate.Tool.hbm2ddl;
 
     /// <summary>
@@ -39,9 +40,11 @@ namespace MassTransit.NHibernateIntegration
         ISessionFactory _sessionFactory;
 
         public NHibernateSessionFactoryProvider(IEnumerable<Type> mappedTypes, Action<IDbIntegrationConfigurationProperties> databaseIntegration)
-            : this(mappedTypes)
         {
             _databaseIntegration = databaseIntegration;
+            _mappedTypes = mappedTypes;
+
+            _configuration = CreateConfiguration();
         }
 
         public NHibernateSessionFactoryProvider(IEnumerable<Type> mappedTypes)
@@ -137,6 +140,21 @@ namespace MassTransit.NHibernateIntegration
             }
         }
 
+        Configuration CreateConfiguration()
+        {
+            ModelMapper mapper = CreateModelMapper();
+
+            HbmMapping domainMapping = mapper.CompileMappingForAllExplicitlyAddedEntities();
+
+            var configuration = new Configuration();
+
+            configuration = ApplyDatabaseIntegration(configuration);
+
+            configuration.AddMapping(domainMapping);
+
+            return configuration;
+        }
+
         Configuration ApplyDatabaseIntegration(Configuration configuration)
         {
             if (_databaseIntegration == null)
@@ -152,21 +170,6 @@ namespace MassTransit.NHibernateIntegration
                     c.KeywordsAutoImport = Hbm2DDLKeyWords.AutoQuote;
                     c.SchemaAction = SchemaAutoAction.Update;
                 });
-
-            return configuration;
-        }
-
-        Configuration CreateConfiguration()
-        {
-            ModelMapper mapper = CreateModelMapper();
-
-            HbmMapping domainMapping = mapper.CompileMappingForAllExplicitlyAddedEntities();
-
-            var configuration = new Configuration();
-
-            configuration = ApplyDatabaseIntegration(configuration);
-
-            configuration.AddMapping(domainMapping);
 
             return configuration;
         }
