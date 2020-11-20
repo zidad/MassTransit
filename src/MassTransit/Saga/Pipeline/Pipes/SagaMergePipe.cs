@@ -40,7 +40,7 @@ namespace MassTransit.Saga.Pipeline.Pipes
             if (context is SagaConsumeContext<TSaga, TMessage> consumerContext)
                 return _output.Send(consumerContext);
 
-            throw new ArgumentException($"THe message could not be retrieved: {TypeMetadataCache<TMessage>.ShortName}", nameof(context));
+            throw new ArgumentException($"The message could not be retrieved: {TypeMetadataCache<TMessage>.ShortName}", nameof(context));
         }
     }
 }

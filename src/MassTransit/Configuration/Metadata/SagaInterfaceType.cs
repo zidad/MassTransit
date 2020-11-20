@@ -10,6 +10,7 @@ namespace MassTransit.Metadata
         readonly Lazy<ISagaConnectorFactory> _initiatedByConnectorFactory;
         readonly Lazy<ISagaConnectorFactory> _observesConnectorFactory;
         readonly Lazy<ISagaConnectorFactory> _orchestratesConnectorFactory;
+        readonly Lazy<ISagaConnectorFactory> _intiatesAndOrchestratesConnectorFactory;
 
         public SagaInterfaceType(Type interfaceType, Type messageType, Type sagaType)
         {
@@ -27,6 +28,11 @@ namespace MassTransit.Metadata
             _orchestratesConnectorFactory =
                 new Lazy<ISagaConnectorFactory>(() => (ISagaConnectorFactory)
                     Activator.CreateInstance(typeof(OrchestratesSagaConnectorFactory<,>).MakeGenericType(
+                        sagaType, messageType)));
+
+            _intiatesAndOrchestratesConnectorFactory =
+                new Lazy<ISagaConnectorFactory>(() => (ISagaConnectorFactory)
+                    Activator.CreateInstance(typeof(InitiatedByAndOrchestratesSagaConnectorFactory<,>).MakeGenericType(
                         sagaType, messageType)));
         }
 
@@ -49,6 +55,12 @@ namespace MassTransit.Metadata
             where T : class, ISaga
         {
             return _observesConnectorFactory.Value.CreateMessageConnector<T>();
+        }
+
+        public ISagaMessageConnector<T> GetInitiatesAndOrchestratesConnector<T>()
+            where T : class, ISaga
+        {
+            return _intiatesAndOrchestratesConnectorFactory.Value.CreateMessageConnector<T>();
         }
     }
 }

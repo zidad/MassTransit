@@ -9,6 +9,7 @@ namespace MassTransit.Tests.Saga
 
     public class SimpleSaga :
         InitiatedBy<InitiateSimpleSaga>,
+        InitiatedByAndOrchestrates<InitiatesAndOrchestratesSimpleSaga>,
         Orchestrates<CompleteSimpleSaga>,
         Observes<ObservableSagaMessage, SimpleSaga>,
         ISaga
@@ -39,6 +40,12 @@ namespace MassTransit.Tests.Saga
         public async Task Consume(ConsumeContext<CompleteSimpleSaga> message)
         {
             Completed = true;
+        }
+
+        public async Task Consume(ConsumeContext<InitiatesAndOrchestratesSimpleSaga> context)
+        {
+            Initiated = true;
+            Name = context.Message.Name;
         }
     }
 }

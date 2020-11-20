@@ -18,4 +18,20 @@ namespace MassTransit.Tests.Saga.Messages
 
         public string Name { get; set; }
     }
+
+    [Serializable]
+    public class InitiatesAndOrchestratesSimpleSaga :
+        SimpleSagaMessageBase
+    {
+        public InitiatesAndOrchestratesSimpleSaga()
+        {
+        }
+
+        public InitiatesAndOrchestratesSimpleSaga(Guid correlationId)
+            : base(correlationId)
+        {
+        }
+
+        public string Name { get; set; }
+    }
 }

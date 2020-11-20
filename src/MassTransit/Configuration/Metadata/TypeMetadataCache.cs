@@ -84,6 +84,7 @@
 
             return interfaces.Any(t => Internals.Extensions.InterfaceExtensions.HasInterface(t, typeof(InitiatedBy<>))
                 || Internals.Extensions.InterfaceExtensions.HasInterface(t, typeof(Orchestrates<>))
+                || Internals.Extensions.InterfaceExtensions.HasInterface(t, typeof(InitiatedByAndOrchestrates<>))
                 || Internals.Extensions.InterfaceExtensions.HasInterface(t, typeof(Observes<,>))
                 || Internals.Extensions.InterfaceExtensions.HasInterface(t, typeof(ISagaDefinition<>)));
         }

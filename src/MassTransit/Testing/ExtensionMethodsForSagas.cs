@@ -66,7 +66,7 @@ namespace MassTransit.Testing
             if (repository is ILoadSagaRepository<TSaga> loadSagaRepository)
                 return loadSagaRepository.ShouldContainSaga(correlationId, condition, timeout);
 
-            return TaskUtil.Faulted<Guid?>(new ArgumentException("Does not support IQuerySagaRepository", nameof(repository)));
+            return TaskUtil.Faulted<Guid?>(new ArgumentException("Does not support ILoadSagaRepository", nameof(repository)));
         }
 
         static async Task<Guid?> ShouldContainSaga<TSaga>(this ILoadSagaRepository<TSaga> repository, Guid correlationId, Func<TSaga, bool> condition,

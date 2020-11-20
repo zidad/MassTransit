@@ -26,7 +26,8 @@
                         + TypeMetadataCache<TSaga>.ShortName);
                 }
 
-                _connectors = Initiates()
+                _connectors = InitiatesAndOrchestrates()
+                    .Concat(Initiates())
                     .Concat(Orchestrates())
                     .Concat(Observes())
                     .Distinct((x, y) => x.MessageType == y.MessageType)
@@ -81,10 +82,13 @@
         {
             return SagaMetadataCache<TSaga>.OrchestratesTypes.Select(x => x.GetOrchestratesConnector<TSaga>());
         }
-
         static IEnumerable<ISagaMessageConnector<TSaga>> Observes()
         {
             return SagaMetadataCache<TSaga>.ObservesTypes.Select(x => x.GetObservesConnector<TSaga>());
+        }
+        static IEnumerable<ISagaMessageConnector<TSaga>> InitiatesAndOrchestrates()
+        {
+            return SagaMetadataCache<TSaga>.InitiatedByTypes.Select(x => x.GetInitiatesAndOrchestratesConnector<TSaga>());
         }
     }
 }

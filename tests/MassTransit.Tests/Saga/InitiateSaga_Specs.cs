@@ -147,6 +147,52 @@ namespace MassTransit.Tests.Saga
     }
 
 
+   [TestFixture]
+    public class When_an_initiating_and_orchestrated_message_arrives :
+        InMemoryTestFixture
+    {
+
+        [Test]
+        public async Task Can_initiate_and_orchestrate_by_the_same_message()
+        {
+            var sagaId = NewId.NextGuid();
+            var message = new InitiatesAndOrchestratesSimpleSaga(sagaId);
+            message.Name = "initiate";
+
+            await InputQueueSendEndpoint.Send(message);
+
+            Guid? foundId = await _repository.ShouldContainSaga(s => message.CorrelationId == sagaId && s.Name=="initiate", TestTimeout);
+            foundId.HasValue.ShouldBe(true);
+
+            var message2 = new InitiatesAndOrchestratesSimpleSaga(sagaId);
+            message2.Name = "orchestrate";
+            await InputQueueSendEndpoint.Send(message2);
+
+            Guid? foundId2 = await _repository.ShouldContainSaga(s => message.CorrelationId == sagaId && s.Name=="orchestrate", TestTimeout);
+            foundId2.HasValue.ShouldBe(true);
+        }
+
+        public When_an_initiating_and_orchestrated_message_arrives()
+        {
+            _repository = new InMemorySagaRepository<SimpleSaga>();
+        }
+
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            _sagaId = Guid.NewGuid();
+        }
+
+        protected override void ConfigureInMemoryReceiveEndpoint(IInMemoryReceiveEndpointConfigurator configurator)
+        {
+            configurator.Saga(_repository);
+        }
+
+        Guid _sagaId;
+        readonly InMemorySagaRepository<SimpleSaga> _repository;
+    }
+
+
     [TestFixture]
     public class When_an_initiating_and_observed_message_for_a_saga_arrives :
         InMemoryTestFixture
@@ -207,6 +253,7 @@ namespace MassTransit.Tests.Saga
                 Assert.AreEqual(sex.MessageType, typeof(InitiateSimpleSaga));
             }
         }
+
 
         [OneTimeSetUp]
         public void SetUp()

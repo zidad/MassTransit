@@ -122,7 +122,7 @@ namespace MassTransit.Metadata
         {
             return typeof(TSaga).GetInterfaces()
                 .Where(x => x.GetTypeInfo().IsGenericType)
-                .Where(x => x.GetGenericTypeDefinition() == typeof(InitiatedBy<>))
+                .Where(x => x.GetGenericTypeDefinition() == typeof(InitiatedBy<>) || x.GetGenericTypeDefinition() == typeof(InitiatedByAndOrchestrates<>))
                 .Select(x => new SagaInterfaceType(x, x.GetGenericArguments()[0], typeof(TSaga)))
                 .Where(x => x.MessageType.GetTypeInfo().IsValueType == false && x.MessageType != typeof(string));
         }
@@ -131,7 +131,7 @@ namespace MassTransit.Metadata
         {
             return typeof(TSaga).GetInterfaces()
                 .Where(x => x.GetTypeInfo().IsGenericType)
-                .Where(x => x.GetGenericTypeDefinition() == typeof(Orchestrates<>))
+                .Where(x => x.GetGenericTypeDefinition() == typeof(Orchestrates<>)|| x.GetGenericTypeDefinition() == typeof(InitiatedByAndOrchestrates<>))
                 .Select(x => new SagaInterfaceType(x, x.GetGenericArguments()[0], typeof(TSaga)))
                 .Where(x => x.MessageType.GetTypeInfo().IsValueType == false && x.MessageType != typeof(string));
         }
